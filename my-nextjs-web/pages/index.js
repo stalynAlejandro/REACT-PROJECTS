@@ -6,6 +6,10 @@ export default function App(props){
             <Text>
                 React Native for Web & Next.js
             </Text>
+
+            <Text accessibilityRole="link" href={`/about`}>
+                A universal link 
+            </Text>
         </View>
     )
 }

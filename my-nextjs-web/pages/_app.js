@@ -1,5 +1,7 @@
+import 'react-native-gesture-handler'
 import * as React from 'react'
 import Head from 'next/head'
+import { NavigationContainer } from '@react-navigation/native'
 
 function MyApp({ Component, pageProps }){
     return(
@@ -7,7 +9,9 @@ function MyApp({ Component, pageProps }){
             <Head>
                 <meta name="viewport" content="width=device-width, intial-scale=1" />
             </Head>
-            <Component {...pageProps} />
+            <NavigationContainer>
+                <Component {...pageProps} />
+            </NavigationContainer>
         </>
     )
 }
