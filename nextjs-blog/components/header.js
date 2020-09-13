@@ -3,7 +3,7 @@ import Modal from '@material-ui/core/Modal';
 import { StyleSheet, css } from 'aphrodite'
 import { withStyles } from 'react-with-styles'
 import { useState, useRef } from 'react'
-
+import TemporaryDrawer from './drawer'
 
 const Header = ({ styles }) => {
 
@@ -22,6 +22,9 @@ const Header = ({ styles }) => {
     return (
         <header className={css(styles.navContainer)}>
 
+        <TemporaryDrawer />
+
+
             <div className={css(styles.root)} ref={rootRef}>
                 <Modal
                     open={open}
@@ -38,6 +41,7 @@ const Header = ({ styles }) => {
                     </div>
                 </Modal>
             </div>
+
 
             <ul className={css(styles.navBar)}>
 
@@ -156,10 +160,10 @@ export default withStyles(({ color, font, breakpoint }) => ({
         justifyContent: 'center',
     },
     paper: {
-        position:'absolute',
+        position: 'absolute',
         width: '50%',
         border: '2px solid #000',
-        backgroundColor:'#fff'
+        backgroundColor: '#fff'
     },
 
 
