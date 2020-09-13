@@ -42,7 +42,7 @@ export default withStyles(({ color, font, breakpoint }) => ({
         paddingRight: 20,
     },
     navText: {
-        fontFamily: 'Nunito',
+        fontFamily: 'Arial',
         fontStyle: 'normal',
         fontWeight: 'normal',
         textDecoration: 'none',

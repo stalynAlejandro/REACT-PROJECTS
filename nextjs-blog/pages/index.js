@@ -45,6 +45,7 @@ const Home = ({ styles }) => (
 export default withStyles(() => ({
     container: {
         dispaly:'block',
+        margin: 0,
     },
 
 }))(Home)

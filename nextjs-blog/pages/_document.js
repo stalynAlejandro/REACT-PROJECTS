@@ -22,7 +22,7 @@ class MyDocument extends Document {
             dangerouslySetInnerHTML={{ __html: css.content }}
           />
         </Head>
-        <body>
+        <body style={{ marginLeft:0, marginRight:0, marginTop:0 }} >
           <Main />
           <NextScript />
           {ids && (
