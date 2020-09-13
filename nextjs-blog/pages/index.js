@@ -7,7 +7,7 @@ const Home = ({ styles }) => (
     <div className={css(styles.container)}>
         <Head>
             <title>My Web Page</title>
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/primaryLogo.svg" />
         </Head>
 
         <Header/>

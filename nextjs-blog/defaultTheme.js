@@ -2,7 +2,8 @@ export default {
     color:{
         primary:'#1A5276',
         dark:'#333',
-        white:'#fff'
+        white:'#D0D3D4',
+        superWhite:'#FFF',
     },
     font:{
         primary:'nunito'
