@@ -12,25 +12,19 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import { Dimensions } from "react-native";
 
-const Header = ({ styles }) => {
+const Header = ({ styles, ...props }) => {
 
     const window = Dimensions.get("window");
     const screen = Dimensions.get("screen");
 
-    console.log(screen.width)
-    
     const rootRef = useRef(null);
 
     const [open, setOpen] = useState(false);
 
-    const handleOpen = () => {
-        setOpen(true);
+    const handleDropMenu = () => {
+        if(open) setOpen(false);
+        else setOpen(true);
     };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
 
 
     return (
@@ -43,7 +37,7 @@ const Header = ({ styles }) => {
                 }}
                 anchor={'top'}
                 open={open}
-                onClose={handleClose} >
+                onClose={handleDropMenu} >
                 <List>
                     <ListItem button>
                         <Link href={'/'}>
@@ -67,8 +61,11 @@ const Header = ({ styles }) => {
 
                 <li className={css(styles.navItem, styles.dropMenu)}>
                     <Link href={'/'}>
-                        <a onClick={handleOpen}>
-                            <img src="/dropMenuWhite.svg" alt="dropMenu" />
+                        <a onClick={handleDropMenu}>
+                            {(open) ?  
+                             <img src="/closeMenuWhite.svg" alt="dropMenu" /> :  
+                             <img src="/dropMenuWhite.svg" alt="dropMenu" />}
+                            {/* <img src="/dropMenuWhite.svg" alt="dropMenu" /> */}
                         </a>
                     </Link>
                 </li>
@@ -113,12 +110,11 @@ const Header = ({ styles }) => {
 
 
 
-export default withStyles(({ color, font, breakpoint, screen }) => ({
+export default withStyles(({ color, font, breakpoint, props }) => ({
     navContainer: {
         position: '-webkit-sticky',
         position: 'sticky',
         top: 0,
-
     },
 
     navBar: {
@@ -173,9 +169,7 @@ export default withStyles(({ color, font, breakpoint, screen }) => ({
         },
     },
     navDrawer: {
-        marginTop: 30,
-
-
+        zIndex:0,
         [breakpoint.large]: {
             display: 'none',
         },
@@ -184,20 +178,20 @@ export default withStyles(({ color, font, breakpoint, screen }) => ({
         },
         [breakpoint.small]: {
             display: 'flex',
-
         },
+
     },
     navDrawerRoot:{
-        position:'flex !important',
-
         overflow: 'scroll',
         overflowX:'hidden',
-        backgroundColor:'none'
+        backgroundColor:'rgb(0 0 0 / 0%)',
+       
     },
     navDrawerPaper: {
         marginTop: 30,
-        backgroundColor: color.dark,
+        backgroundColor: color.superDark,
         height:'100%',
 
-    }
+    },
+
 }))(Header)
