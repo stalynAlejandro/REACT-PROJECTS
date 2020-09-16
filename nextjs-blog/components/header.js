@@ -14,9 +14,6 @@ import { Dimensions } from "react-native";
 
 const Header = ({ styles, ...props }) => {
 
-    // const window = Dimensions.get("window");
-    // const screen = Dimensions.get("screen");
-
     const headerOptions = ['Home', 'Product', 'About', 'Contact']
 
     const [open, setOpen] = useState(false);
@@ -25,7 +22,6 @@ const Header = ({ styles, ...props }) => {
         if (open) setOpen(false);
         else setOpen(true);
     };
-
 
     return (
         <header className={css(styles.navContainer)}>
@@ -51,7 +47,7 @@ const Header = ({ styles, ...props }) => {
                 </List>
             </Drawer>
 
-            <ul className={css(styles.navBar)}>
+            <ul className={ (open) ? css(styles.navBarDark) : css(styles.navBar) }>
 
                 {/* Logo Drop Menu */}
                 <li className={css(styles.navItem, styles.dropMenu)}>
@@ -97,16 +93,14 @@ const Header = ({ styles, ...props }) => {
     )
 }
 
-
-
 export default withStyles(({ color, breakpoint }) => ({
     navContainer: {
         position: '-webkit-sticky',
         position: 'sticky',
         top: 0,
     },
-
     navBar: {
+        height: 42,
         display: 'flex',
         flexDirection: 'row',
         margin: 0,
@@ -125,8 +119,20 @@ export default withStyles(({ color, breakpoint }) => ({
             paddingRight: 20,
         },
     },
+    navBarDark:{
+        margin: 0,
+        padding: 0,
+        height: 42,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: color.superDark,
+        paddingLeft: 20,
+        paddingRight: 20,
+        
+    },
     navItem: {
-        padding: 6,
+        padding: 10,
     },
     navText: {
         fontFamily: 'Nunito',
@@ -168,19 +174,15 @@ export default withStyles(({ color, breakpoint }) => ({
         [breakpoint.small]: {
             display: 'flex',
         },
-
     },
     navDrawerRoot: {
         overflow: 'scroll',
         overflowX: 'hidden',
-        backgroundColor: 'rgb(0 0 0 / 0%)',
-
     },
     navDrawerPaper: {
-        marginTop: 30,
-        backgroundColor: color.superDark,
+        marginTop: 40,
         height: '100%',
-
+        backgroundColor: color.superDark,
     },
     navMenuText: {
         fontFamily: 'Nunito',
@@ -195,5 +197,4 @@ export default withStyles(({ color, breakpoint }) => ({
             color: color.superWhite,
         },
     },
-
 }))(Header)

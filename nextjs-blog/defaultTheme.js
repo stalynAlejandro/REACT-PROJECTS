@@ -1,6 +1,6 @@
 export default {
     color:{
-        primary:'#1A5276',
+        gray:'#f1f1f1',
         dark:'#333',
         superDark: '#000000',
         white:'#D0D3D4',

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/header'
+import Footer from '../components/footer'
 import { css } from 'aphrodite'
 
 const About = () => (
@@ -12,6 +13,8 @@ const About = () => (
         <Header />
 
         <h1> About Page </h1>
+
+        <Footer />
     </>
 )
 
