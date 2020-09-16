@@ -14,15 +14,13 @@ import { Dimensions } from "react-native";
 
 const Header = ({ styles, ...props }) => {
 
-    const window = Dimensions.get("window");
-    const screen = Dimensions.get("screen");
-
-    const rootRef = useRef(null);
+    // const window = Dimensions.get("window");
+    // const screen = Dimensions.get("screen");
 
     const [open, setOpen] = useState(false);
 
     const handleDropMenu = () => {
-        if(open) setOpen(false);
+        if (open) setOpen(false);
         else setOpen(true);
     };
 
@@ -41,17 +39,22 @@ const Header = ({ styles, ...props }) => {
                 <List>
                     <ListItem button>
                         <Link href={'/'}>
-                            <a target="_blank" className={css(styles.navText)}> Home </a>
+                            <a target="_blank" className={css(styles.navMenuText)}> Home </a>
                         </Link>
                     </ListItem>
                     <ListItem button>
                         <Link href={'/'}>
-                            <a className={css(styles.navText)}> Product </a>
+                            <a className={css(styles.navMenuText)}> Product </a>
                         </Link>
                     </ListItem>
                     <ListItem button>
                         <Link href={'/'}>
-                            <a className={css(styles.navText)}> About </a>
+                            <a className={css(styles.navMenuText)}> About </a>
+                        </Link>
+                    </ListItem>
+                    <ListItem button>
+                        <Link href={'/'}>
+                            <a className={css(styles.navMenuText)}> Contact </a>
                         </Link>
                     </ListItem>
                 </List>
@@ -62,10 +65,9 @@ const Header = ({ styles, ...props }) => {
                 <li className={css(styles.navItem, styles.dropMenu)}>
                     <Link href={'/'}>
                         <a onClick={handleDropMenu}>
-                            {(open) ?  
-                             <img src="/closeMenuWhite.svg" alt="dropMenu" /> :  
-                             <img src="/dropMenuWhite.svg" alt="dropMenu" />}
-                            {/* <img src="/dropMenuWhite.svg" alt="dropMenu" /> */}
+                            {(open) ?
+                                <img src="/closeMenuWhite.svg" alt="dropMenu" /> :
+                                <img src="/dropMenuWhite.svg" alt="dropMenu" />}
                         </a>
                     </Link>
                 </li>
@@ -110,7 +112,7 @@ const Header = ({ styles, ...props }) => {
 
 
 
-export default withStyles(({ color, font, breakpoint, props }) => ({
+export default withStyles(({ color, breakpoint }) => ({
     navContainer: {
         position: '-webkit-sticky',
         position: 'sticky',
@@ -169,7 +171,7 @@ export default withStyles(({ color, font, breakpoint, props }) => ({
         },
     },
     navDrawer: {
-        zIndex:0,
+        zIndex: 0,
         [breakpoint.large]: {
             display: 'none',
         },
@@ -181,17 +183,30 @@ export default withStyles(({ color, font, breakpoint, props }) => ({
         },
 
     },
-    navDrawerRoot:{
+    navDrawerRoot: {
         overflow: 'scroll',
-        overflowX:'hidden',
-        backgroundColor:'rgb(0 0 0 / 0%)',
-       
+        overflowX: 'hidden',
+        backgroundColor: 'rgb(0 0 0 / 0%)',
+
     },
     navDrawerPaper: {
         marginTop: 30,
         backgroundColor: color.superDark,
-        height:'100%',
+        height: '100%',
 
+    },
+    navMenuText: {
+        fontFamily: 'Nunito',
+        fontStyle: 'normal',
+        fontWeight: 0,
+        fontSize: 18,
+        textDecoration: 'none',
+        color: color.white,
+        marginLeft: 40,
+        marginTop: 20,
+        ':hover': {
+            color: color.superWhite,
+        },
     },
 
 }))(Header)

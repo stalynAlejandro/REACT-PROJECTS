@@ -4,7 +4,7 @@ export default {
         dark:'#333',
         superDark: '#000000',
         white:'#D0D3D4',
-        superWhite:'#FFF',
+        superWhite:'#FFFFFF',
     },
     font:{
         primary:'nunito'
