@@ -14,7 +14,7 @@ import { Dimensions } from "react-native";
 
 const Header = ({ styles, ...props }) => {
 
-    const headerOptions = ['Home', 'Product', 'About', 'Contact']
+    const [headerOptions, setHeaderOptions] = useState(['Home', 'Product', 'About','Contact']);
 
     const [open, setOpen] = useState(false);
 
@@ -35,9 +35,9 @@ const Header = ({ styles, ...props }) => {
                 open={open}
                 onClose={handleDropMenu} >
                 <List>
-                    {headerOptions.map((op) => {
+                    {headerOptions.map((op, i) => {
                         return (
-                            <ListItem button>
+                            <ListItem button key={i}>
                                 <Link href={op.toLocaleLowerCase()}>
                                     <a className={css(styles.navMenuText)}> {op} </a>
                                 </Link>
@@ -70,9 +70,9 @@ const Header = ({ styles, ...props }) => {
                 </li>
 
                 {/* Menu Principal */}
-                {headerOptions.map((op) => {
+                {headerOptions.map((op, i) => {
                     return (
-                        <li className={css(styles.navItem, styles.responsiveSmall)}>
+                        <li className={css(styles.navItem, styles.responsiveSmall)} key={i}>
                             <Link href={op.toLocaleLowerCase()}>
                                 <a className={css(styles.navText)}> {op} </a>
                             </Link>
