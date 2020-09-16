@@ -39,7 +39,7 @@ const Header = ({ styles, ...props }) => {
                 <List>
                     <ListItem button>
                         <Link href={'/'}>
-                            <a target="_blank" className={css(styles.navMenuText)}> Home </a>
+                            <a className={css(styles.navMenuText)}> Home </a>
                         </Link>
                     </ListItem>
                     <ListItem button>
@@ -48,7 +48,7 @@ const Header = ({ styles, ...props }) => {
                         </Link>
                     </ListItem>
                     <ListItem button>
-                        <Link href={'/'}>
+                        <Link href={'/about'}>
                             <a className={css(styles.navMenuText)}> About </a>
                         </Link>
                     </ListItem>
@@ -63,7 +63,7 @@ const Header = ({ styles, ...props }) => {
             <ul className={css(styles.navBar)}>
 
                 <li className={css(styles.navItem, styles.dropMenu)}>
-                    <Link href={'/'}>
+                    <Link href={''}>
                         <a onClick={handleDropMenu}>
                             {(open) ?
                                 <img src="/closeMenuWhite.svg" alt="dropMenu" /> :
@@ -93,7 +93,7 @@ const Header = ({ styles, ...props }) => {
                 </li>
 
                 <li className={css(styles.navItem, styles.responsiveSmall)}>
-                    <Link href={'/'}>
+                    <Link href={'/about'}>
                         <a className={css(styles.navText)}> About </a>
                     </Link>
                 </li>

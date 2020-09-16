@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/header'
 import { css } from 'aphrodite'
-import styles from '../style/styles'
 
 const About = () => (
     <>
@@ -12,7 +11,7 @@ const About = () => (
         
         <Header />
 
-        <h1 {...css(styles.title)} > About Page </h1>
+        <h1> About Page </h1>
     </>
 )
 
