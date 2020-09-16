@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TemporaryDrawer() {
+export default function ExampleDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,

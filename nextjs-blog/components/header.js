@@ -3,10 +3,22 @@ import Modal from '@material-ui/core/Modal';
 import { StyleSheet, css } from 'aphrodite'
 import { withStyles } from 'react-with-styles'
 import { useState, useRef } from 'react'
-import TemporaryDrawer from './drawer'
+import Drawer from '@material-ui/core/Drawer'
+
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
+import { Dimensions } from "react-native";
 
 const Header = ({ styles }) => {
 
+    const window = Dimensions.get("window");
+    const screen = Dimensions.get("screen");
+
+    console.log(screen.width)
+    
     const rootRef = useRef(null);
 
     const [open, setOpen] = useState(false);
@@ -19,29 +31,37 @@ const Header = ({ styles }) => {
         setOpen(false);
     };
 
+
+
     return (
         <header className={css(styles.navContainer)}>
-
-        <TemporaryDrawer />
-
-
-            <div className={css(styles.root)} ref={rootRef}>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                >
-                    <div className={css(styles.paper)}>
-                        <h2 id="server-modal-title">Menu</h2>
-                        <p id="server-modal-description"> Options </p>
-                        <p id="server-modal-description"> Options </p>
-                        <p id="server-modal-description"> Options </p>
-
-                    </div>
-                </Modal>
-            </div>
-
+            <Drawer
+                className={css(styles.navDrawer)}
+                classes={{
+                    root: css(styles.navDrawerRoot),
+                    paper: css(styles.navDrawerPaper),
+                }}
+                anchor={'top'}
+                open={open}
+                onClose={handleClose} >
+                <List>
+                    <ListItem button>
+                        <Link href={'/'}>
+                            <a target="_blank" className={css(styles.navText)}> Home </a>
+                        </Link>
+                    </ListItem>
+                    <ListItem button>
+                        <Link href={'/'}>
+                            <a className={css(styles.navText)}> Product </a>
+                        </Link>
+                    </ListItem>
+                    <ListItem button>
+                        <Link href={'/'}>
+                            <a className={css(styles.navText)}> About </a>
+                        </Link>
+                    </ListItem>
+                </List>
+            </Drawer>
 
             <ul className={css(styles.navBar)}>
 
@@ -93,12 +113,14 @@ const Header = ({ styles }) => {
 
 
 
-export default withStyles(({ color, font, breakpoint }) => ({
+export default withStyles(({ color, font, breakpoint, screen }) => ({
     navContainer: {
         position: '-webkit-sticky',
         position: 'sticky',
         top: 0,
+
     },
+
     navBar: {
         display: 'flex',
         flexDirection: 'row',
@@ -150,21 +172,32 @@ export default withStyles(({ color, font, breakpoint }) => ({
 
         },
     },
+    navDrawer: {
+        marginTop: 30,
 
-    root: {
 
+        [breakpoint.large]: {
+            display: 'none',
+        },
+        [breakpoint.medium]: {
+            display: 'none',
+        },
+        [breakpoint.small]: {
+            display: 'flex',
+
+        },
     },
-    modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    paper: {
-        position: 'absolute',
-        width: '50%',
-        border: '2px solid #000',
-        backgroundColor: '#fff'
-    },
+    navDrawerRoot:{
+        position:'flex !important',
 
+        overflow: 'scroll',
+        overflowX:'hidden',
+        backgroundColor:'none'
+    },
+    navDrawerPaper: {
+        marginTop: 30,
+        backgroundColor: color.dark,
+        height:'100%',
 
+    }
 }))(Header)

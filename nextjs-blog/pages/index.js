@@ -30,12 +30,6 @@ const Home = ({ styles }) => (
         <h1>Hello</h1>
         <h1>Hello</h1>
         <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
-        <h1>Hello</h1>
 
     </div>
 )
@@ -46,6 +40,7 @@ export default withStyles(() => ({
     container: {
         dispaly:'block',
         margin: 0,
+        
     },
 
 }))(Home)
