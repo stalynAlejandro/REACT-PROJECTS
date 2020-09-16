@@ -17,6 +17,8 @@ const Header = ({ styles, ...props }) => {
     // const window = Dimensions.get("window");
     // const screen = Dimensions.get("screen");
 
+    const headerOptions = ['Home', 'Product', 'About', 'Contact']
+
     const [open, setOpen] = useState(false);
 
     const handleDropMenu = () => {
@@ -37,31 +39,21 @@ const Header = ({ styles, ...props }) => {
                 open={open}
                 onClose={handleDropMenu} >
                 <List>
-                    <ListItem button>
-                        <Link href={'/'}>
-                            <a className={css(styles.navMenuText)}> Home </a>
-                        </Link>
-                    </ListItem>
-                    <ListItem button>
-                        <Link href={'/'}>
-                            <a className={css(styles.navMenuText)}> Product </a>
-                        </Link>
-                    </ListItem>
-                    <ListItem button>
-                        <Link href={'/about'}>
-                            <a className={css(styles.navMenuText)}> About </a>
-                        </Link>
-                    </ListItem>
-                    <ListItem button>
-                        <Link href={'/'}>
-                            <a className={css(styles.navMenuText)}> Contact </a>
-                        </Link>
-                    </ListItem>
+                    {headerOptions.map((op) => {
+                        return (
+                            <ListItem button>
+                                <Link href={op.toLocaleLowerCase()}>
+                                    <a className={css(styles.navMenuText)}> {op} </a>
+                                </Link>
+                            </ListItem>
+                        )
+                    })}
                 </List>
             </Drawer>
 
             <ul className={css(styles.navBar)}>
 
+                {/* Logo Drop Menu */}
                 <li className={css(styles.navItem, styles.dropMenu)}>
                     <Link href={''}>
                         <a onClick={handleDropMenu}>
@@ -72,6 +64,7 @@ const Header = ({ styles, ...props }) => {
                     </Link>
                 </li>
 
+                {/* Logo Principal Medio */}
                 <li className={css(styles.navItem)}>
                     <Link href={'/'}>
                         <a href="/" target="_blank">
@@ -80,32 +73,26 @@ const Header = ({ styles, ...props }) => {
                     </Link>
                 </li>
 
-                <li className={css(styles.navItem, styles.responsiveSmall)}>
-                    <Link href={'/'}>
-                        <a className={css(styles.navText)}> Home </a>
+                {/* Menu Principal */}
+                {headerOptions.map((op) => {
+                    return (
+                        <li className={css(styles.navItem, styles.responsiveSmall)}>
+                            <Link href={op.toLocaleLowerCase()}>
+                                <a className={css(styles.navText)}> {op} </a>
+                            </Link>
+                        </li>
+                    )
+                })}
+
+                {/* Logo de Contactar */}
+                <li className={css(styles.navItem, styles.dropMenu)}>
+                    <Link href={'/contact'}>
+                        <a href="/">
+                            <img src="/contactWhite.svg" alt="primaryLogo" />
+                        </a>
                     </Link>
                 </li>
-
-                <li className={css(styles.navItem, styles.responsiveSmall)}>
-                    <Link href={'/'}>
-                        <a className={css(styles.navText)}> Product </a>
-                    </Link>
-                </li>
-
-                <li className={css(styles.navItem, styles.responsiveSmall)}>
-                    <Link href={'/about'}>
-                        <a className={css(styles.navText)}> About </a>
-                    </Link>
-                </li>
-
-                <li className={css(styles.navItem)}>
-                    <Link href={'/'}>
-                        <a className={css(styles.navText)}> Contact </a>
-                    </Link>
-                </li>
-
             </ul>
-
         </header>
     )
 }
