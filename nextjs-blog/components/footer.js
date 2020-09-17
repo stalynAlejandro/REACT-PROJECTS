@@ -6,7 +6,7 @@ const Footer = ({ styles, ...props }) => {
         <footer className={css(styles.footer)}>
             <p className={css(styles.text)} >
                 &copy; 2020 Inc.  &middot; Made by Stalyn Alejandro with ReactJs + NextJs &middot;
-                <a href="https://github.com/stalynAlejandro">Github</a>
+                <a target='_blank' href="https://github.com/stalynAlejandro">Github</a>
             </p>
         </footer>
     )
@@ -14,14 +14,14 @@ const Footer = ({ styles, ...props }) => {
 
 export default withStyles(({ color, breakpoint }) => ({
     footer: {
-        display:'block',
+        display: 'block',
         backgroundColor: color.gray,
         position: 'absolute',
         textAlign: 'center',
         width: '100%',
         marginBottom: '-999px',
         height: 100,
-        
+
     },
     text: {
         marginTop: 40,

@@ -14,7 +14,7 @@ import { Dimensions } from "react-native";
 
 const Header = ({ styles, ...props }) => {
 
-    const [headerOptions, setHeaderOptions] = useState(['Home', 'Product', 'About','Contact']);
+    const [headerOptions, setHeaderOptions] = useState(['Home', 'Product', 'About', 'Contact']);
 
     const [open, setOpen] = useState(false);
 
@@ -38,7 +38,7 @@ const Header = ({ styles, ...props }) => {
                     {headerOptions.map((op, i) => {
                         return (
                             <ListItem button key={i}>
-                                <Link href={op.toLocaleLowerCase()}>
+                                <Link href={op.toLocaleLowerCase()} key={i}>
                                     <a className={css(styles.navMenuText)}> {op} </a>
                                 </Link>
                             </ListItem>
@@ -47,7 +47,7 @@ const Header = ({ styles, ...props }) => {
                 </List>
             </Drawer>
 
-            <ul className={ (open) ? css(styles.navBarDark) : css(styles.navBar) }>
+            <ul className={(open) ? css(styles.navBarDark) : css(styles.navBar)}>
 
                 {/* Logo Drop Menu */}
                 <li className={css(styles.navItem, styles.dropMenu)}>
@@ -119,7 +119,7 @@ export default withStyles(({ color, breakpoint }) => ({
             paddingRight: 20,
         },
     },
-    navBarDark:{
+    navBarDark: {
         margin: 0,
         padding: 0,
         height: 42,
@@ -129,7 +129,7 @@ export default withStyles(({ color, breakpoint }) => ({
         backgroundColor: color.superDark,
         paddingLeft: 20,
         paddingRight: 20,
-        
+
     },
     navItem: {
         padding: 10,
