@@ -10,7 +10,7 @@ function Footer() {
                 rel="noopener noreferrer"
             >
                 SCHAIN{' '}
-                <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+                <img src="icons/vercel.svg" alt="Vercel Logo" className={styles.logo} />
             </a>
         </footer>
     )

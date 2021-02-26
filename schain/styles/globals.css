@@ -16,7 +16,7 @@ a {
 }
 
 input {
-  background: url('/iconLoupe.svg');
+  background: url('/icons/iconLoupe.svg');
   background-repeat: no-repeat;
   background-position: right;
   background-color: rgb(237, 232, 243);
@@ -46,4 +46,13 @@ input:focus {
     width: 160px;
     padding: 0 4px;
     cursor: text;
+}
+
+
+@font-face {
+  font-family: "Gruppo";
+  src: url("/fonts/Gruppo/Gruppo-Regular.ttf");
+  font-style: medium;
+  font-weight: 500;
+  font-display: swap;
 }

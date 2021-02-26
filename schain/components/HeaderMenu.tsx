@@ -5,12 +5,12 @@ function HeaderMenu() {
     return (
         <main className={styles.container}>
             <div className="div">
-                <img src="/iconInstagram.svg" alt="Shopping Logo" className={styles.logo} />
+                <img src="icons/iconInstagram.svg" alt="Shopping Logo" className={styles.logo} />
             </div>
 
             <div className={styles.searchContainer}>
                 <input type="text"/>
-                <img src="/iconShopping.svg" alt="Shopping Logo" className={styles.logo} />
+                <img src="icons/iconShopping.svg" alt="Shopping Logo" className={styles.logo} />
             </div>
         </main>
     )
