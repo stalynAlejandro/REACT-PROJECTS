@@ -8,6 +8,7 @@ function HomePage() {
         <div className={styles.container}>
             <Head>
                 <title>Create Next App</title>
+                <link rel="preload" href="/fonts/Gruppo/Gruppo-Regular.ttf" as="font" crossOrigin="" /> 
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 

@@ -9,9 +9,10 @@ function HeaderMenu() {
             </div>
 
             <div className={styles.searchContainer}>
-                <input type="text"/>
+                <input className={styles.searchInput} type="text"/>
                 <img src="icons/iconShopping.svg" alt="Shopping Logo" className={styles.logo} />
             </div>
+        
         </main>
     )
 }

@@ -15,40 +15,6 @@ a {
   box-sizing: border-box;
 }
 
-input {
-  background: url('/icons/iconLoupe.svg');
-  background-repeat: no-repeat;
-  background-position: right;
-  background-color: rgb(237, 232, 243);
-  border-radius: 1rem;
-  text-align:start;
-  border: none;
-  outline: none;
-  width: 1.5rem;
-  min-width: 0;
-  padding: 0;
-  z-index: 1;
-  position: relative;
-  line-height: 16px;
-  font-size: 18px;
-  -webkit-appearance: none;
-  transition: all .6s ease;
-  cursor: pointer;
-}
-
-input::placeholder{
-  position: absolute;
-  top: 1rem;
-  text-align: justify;
-}
-
-input:focus {
-    width: 160px;
-    padding: 0 4px;
-    cursor: text;
-}
-
-
 @font-face {
   font-family: "Gruppo";
   src: url("/fonts/Gruppo/Gruppo-Regular.ttf");
