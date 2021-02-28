@@ -1,6 +1,6 @@
 .footerContainer {
     width: 100%;
-    height: 15rem;
+    height: 100%;
     border-top: 1px solid #eaeaea;
     display: flex;
     justify-content: space-evenly;
@@ -60,3 +60,19 @@
     height: 1em;
 }
 
+@media (max-width: 600px) {
+    .footerContainer {
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        font-family: 'Gruppo';
+    }
+    .footerTitleContainer{
+        width: 15rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        padding-top: 3rem;
+    }    
+} 
