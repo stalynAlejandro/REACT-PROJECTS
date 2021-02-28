@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native-web'
-import * as COLORS from '../constants/COLORS'
+import * as COLORS from '../../constants/COLORS'
 
 interface IButtonBlack {
     title: string,

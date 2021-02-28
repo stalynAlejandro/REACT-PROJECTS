@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Footer.module.css'
 import stylesNative from './Footer.style'
-import { ButtonBlack } from './ButtonBlack'
+import { ButtonBlack } from '../ButtonBlack/ButtonBlack'
 import { TextInput } from 'react-native-web'
 
 interface IFooterTitle {

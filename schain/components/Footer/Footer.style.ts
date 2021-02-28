@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native-web'
-import * as COLORS from '../constants/COLORS'
+import * as COLORS from '../../constants/COLORS'
 
 export default StyleSheet.create({
     newsLetterInput: {

@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { HeaderMenu, Footer } from '../components'
+import { HeaderMenu, Footer, TitleMain, SubHeaderMenu } from '../components'
 import styles from './HomePage.module.css'
 
 function HomePage() {
@@ -14,11 +14,9 @@ function HomePage() {
 
             <HeaderMenu />
 
-            <main className={styles.main}>
-                <h1 className={styles.title}>
-                    SCHAIN
-                </h1>
-            </main>
+            <TitleMain title={"SCHAIN"} />
+
+            <SubHeaderMenu />
 
             <Footer />
         </div>
