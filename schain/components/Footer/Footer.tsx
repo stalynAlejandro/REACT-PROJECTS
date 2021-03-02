@@ -40,8 +40,11 @@ const FooterInfo = () => {
         </div>
     )
 }
-
-const FooterNewsLetter = () => {
+interface IFooterNewsLetter {
+    setValue: Function,
+    action: Function,
+}
+const FooterNewsLetter = ({ setValue, action }: IFooterNewsLetter) => {
     const stylesNative = StyleSheet.create({
         newsLetterInput: {
             height: '2.5rem',
@@ -56,14 +59,17 @@ const FooterNewsLetter = () => {
             textColor: COLORS.white,
             marginTop: '1rem',
         }
-    }) 
+    })
     return (
         <div className={styles.footerTitleContainer}>
             <span className={styles.menuTitle}>Subscríbete</span>
             <span className={styles.link}>Entérate de nuestras ofertas y noticias</span>
             <div className={styles.footerNewsLetter}>
-                <TextInput style={stylesNative.newsLetterInput} placeholder={"Escribe tu email..."} />
-                <ButtonBlack title={"Enviar"} action={() => console.log("Enviar Email")} />
+                <TextInput
+                    style={stylesNative.newsLetterInput}
+                    onChangeText={(text: string) => setValue(text)}
+                    placeholder={"Escribe tu email..."} />
+                <ButtonBlack title={"Enviar"} action={() => action()} />
             </div>
         </div>
     )
@@ -71,8 +77,8 @@ const FooterNewsLetter = () => {
 
 
 function Footer() {
-    
-    const[email, setEmail] = useState<string>('')
+
+    const [email, setEmail] = useState<string>('')
     const subscribeEmail = () => console.log(`Subscribir: ${email}`)
 
     return (
@@ -80,7 +86,7 @@ function Footer() {
             <FooterTitle title={"SCHAIN"} direction={"avd/ Comunidad Valencia, 46770, España"} />
             <FooterMenu />
             <FooterInfo />
-            <FooterNewsLetter />
+            <FooterNewsLetter setValue={setEmail} action={subscribeEmail} />
         </footer>
     )
 }

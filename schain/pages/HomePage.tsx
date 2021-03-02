@@ -13,14 +13,10 @@ function HomePage() {
             </Head>
 
             <HeaderMenu />
-
             <TitleMain title={"SCHAIN"} />
-
             <SubHeaderMenu />
-
             <Footer />
         </div>
-
     )
 }
 
