@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Footer.module.css'
-import stylesNative from './Footer.style'
 import { ButtonBlack } from '../ButtonBlack/ButtonBlack'
-import { TextInput } from 'react-native-web'
+import { StyleSheet, TextInput } from 'react-native-web'
+import * as COLORS from '../../constants/COLORS'
 
 interface IFooterTitle {
     title: string,
@@ -42,6 +42,21 @@ const FooterInfo = () => {
 }
 
 const FooterNewsLetter = () => {
+    const stylesNative = StyleSheet.create({
+        newsLetterInput: {
+            height: '2.5rem',
+            width: '12rem',
+            backgroundColor: COLORS.maxBlack,
+            borderColor: COLORS.white,
+            color: COLORS.white,
+            borderRadius: 4,
+            borderWidth: 3,
+            textContentType: 'emailAddress',
+            textAlign: 'center',
+            textColor: COLORS.white,
+            marginTop: '1rem',
+        }
+    }) 
     return (
         <div className={styles.footerTitleContainer}>
             <span className={styles.menuTitle}>Subscríbete</span>
@@ -56,6 +71,10 @@ const FooterNewsLetter = () => {
 
 
 function Footer() {
+    
+    const[email, setEmail] = useState<string>('')
+    const subscribeEmail = () => console.log(`Subscribir: ${email}`)
+
     return (
         <footer className={styles.footerContainer}>
             <FooterTitle title={"SCHAIN"} direction={"avd/ Comunidad Valencia, 46770, España"} />
@@ -65,7 +84,5 @@ function Footer() {
         </footer>
     )
 }
-
-
 
 export { Footer }
