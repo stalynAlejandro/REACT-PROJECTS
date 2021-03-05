@@ -1,0 +1,1 @@
+export { SombrerosContent } from './SombrerosContent'

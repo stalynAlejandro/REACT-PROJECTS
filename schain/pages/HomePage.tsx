@@ -1,6 +1,17 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
-import { MainCover, HeaderMenu, Footer, TitleMain, SubHeaderMenu, SubMenuContent } from '../components'
+import { 
+    MainCover, 
+    HeaderMenu, 
+    Footer, 
+    TitleMain, 
+    SubHeaderMenu, 
+    SubMenuContent, 
+    PulserasContent, 
+    RelojesContent, 
+    CollaresContent, 
+    SombrerosContent 
+} from '../components'
 import styles from '../styles/Home.module.css'
 
 function HomePage() {
@@ -18,10 +29,15 @@ function HomePage() {
             <HeaderMenu />
             <TitleMain title={"SCHAIN"} />
             <SubHeaderMenu selected={selected} setSelected={setSelected} setShowMenu={setShowMenu} />
-            <SubMenuContent showMenu={showMenu} setShowMenu={setShowMenu} />
+            {/* <SubMenuContent showMenu={showMenu} setShowMenu={setShowMenu} /> */}
 
             <div className={styles.content}>
                 <MainCover />
+                {(selected === 'home') && <PulserasContent />}
+                {(selected === 'pulseras') && <PulserasContent />}
+                {(selected === 'relojes') && <RelojesContent />}
+                {(selected === 'collares') && <CollaresContent />}
+                {(selected === 'sombreros') && <SombrerosContent />}
             </div>
 
             <Footer />

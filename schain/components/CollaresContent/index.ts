@@ -1,0 +1,1 @@
+export { CollaresContent } from './CollaresContent'
