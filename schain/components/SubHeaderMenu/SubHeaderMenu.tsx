@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import styles from './SubHeaderMenu.module.css'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native-web'
 import * as COLORS from '../../constants/COLORS'
+import styles from './SubHeaderMenu.module.css'
 
 interface IOption {
     title: string,
     selected: string,
-    setOption: Function
+    setOption: Function,
+    setShowMenu: Function
 }
 
 const Option = (args: IOption) => {
@@ -21,7 +22,7 @@ const Option = (args: IOption) => {
     }
 
     const styles = StyleSheet.create({
-        optionContainerInctive:{
+        optionContainerInctive: {
             ...container,
         },
         optionContainerActive: {
@@ -37,28 +38,32 @@ const Option = (args: IOption) => {
             fontWeight: 'normal'
         }
     })
+
     return (
-        <TouchableOpacity style={(args.title === args.selected) ? styles.optionContainerActive : styles.optionContainerInctive} onPress={() => args.setOption(args.title)}>
-            <Text style={(args.title === args.selected) ? styles.option : styles.optionActive}>{args.title}</Text>
-        </TouchableOpacity >
+        <div onMouseOver={() => args.setShowMenu(args.title)} >
+            <TouchableOpacity style={(args.title === args.selected) ? styles.optionContainerActive : styles.optionContainerInctive} onPress={() => args.setOption(args.title)}>
+                <Text style={(args.title === args.selected) ? styles.option : styles.optionActive}>{args.title}</Text>
+            </TouchableOpacity >
+        </div>
     )
 }
 
-function SubHeaderMenu() {
+interface ISubHeaderMenu {
+    selected: string,
+    setSelected: Function,
+    setShowMenu: Function
+}
 
-    const [selected, setSelected] = useState<string>('home')
-    console.log(selected)
-
+function SubHeaderMenu(args: ISubHeaderMenu) {
     return (
         <main className={styles.container}>
-            <Option title={"home"} selected={selected} setOption={setSelected} />
-            <Option title={"pulseras"} selected={selected} setOption={setSelected} />
-            <Option title={"relojes"} selected={selected} setOption={setSelected} />
-            <Option title={"collares"} selected={selected} setOption={setSelected} />
-            <Option title={"sombreros"} selected={selected} setOption={setSelected} />
+            <Option title={"home"} selected={args.selected} setOption={args.setSelected} setShowMenu={args.setShowMenu} />
+            <Option title={"pulseras"} selected={args.selected} setOption={args.setSelected} setShowMenu={args.setShowMenu} />
+            <Option title={"relojes"} selected={args.selected} setOption={args.setSelected} setShowMenu={args.setShowMenu} />
+            <Option title={"collares"} selected={args.selected} setOption={args.setSelected} setShowMenu={args.setShowMenu} />
+            <Option title={"sombreros"} selected={args.selected} setOption={args.setSelected} setShowMenu={args.setShowMenu} />
         </main>
     )
 };
-
 
 export { SubHeaderMenu }

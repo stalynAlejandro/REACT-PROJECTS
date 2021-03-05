@@ -8,7 +8,7 @@ interface ITitleMain {
 
 function TitleMain({ title }: ITitleMain) {
     return (
-        <main className={styles.main}>
+        <main>
             <AnimateKeyframes
                 play
                 duration={3}
