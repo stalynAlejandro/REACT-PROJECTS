@@ -5,6 +5,36 @@
     background-color: rgb(233, 233, 233);
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
+
+.optionContainer{
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+
+@media (max-width: 1400px) {
+    .optionContainer{
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+} 
+
+@media (max-width: 900px) {
+    .optionContainer{
+        margin-left: 0.75rem;
+        margin-right: 0.75rem;
+    }
+} 
+
+@media (max-width: 400px) {
+    .optionContainer{
+        margin-left: 0rem;
+        margin-right: 0rem;
+    }
+} 

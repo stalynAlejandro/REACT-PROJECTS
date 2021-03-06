@@ -21,7 +21,7 @@ const Option = (args: IOption) => {
         paddingVertical: 24,
     }
 
-    const styles = StyleSheet.create({
+    const stylesNative = StyleSheet.create({
         optionContainerInctive: {
             ...container,
         },
@@ -40,9 +40,9 @@ const Option = (args: IOption) => {
     })
 
     return (
-        <div onMouseOver={() => args.setShowMenu(args.title)} >
-            <TouchableOpacity style={(args.title === args.selected) ? styles.optionContainerActive : styles.optionContainerInctive} onPress={() => args.setOption(args.title)}>
-                <Text style={(args.title === args.selected) ? styles.option : styles.optionActive}>{args.title}</Text>
+        <div className={styles.optionContainer} onMouseOver={() => args.setShowMenu(args.title)} >
+            <TouchableOpacity style={(args.title === args.selected) ? styles.optionContainerActive : stylesNative.optionContainerInctive} onPress={() => args.setOption(args.title)}>
+                <Text style={(args.title === args.selected) ? stylesNative.option : stylesNative.optionActive}>{args.title}</Text>
             </TouchableOpacity >
         </div>
     )
