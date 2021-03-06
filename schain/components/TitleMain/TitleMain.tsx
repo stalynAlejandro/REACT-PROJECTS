@@ -13,9 +13,11 @@ function TitleMain({ title }: ITitleMain) {
                 play
                 duration={3}
                 keyframes={["opacity: 0", "opacity: 1"]}>
-                <h1 className={styles.title}>
+                <a href={'/HomePage'}>
+                    <h1 className={styles.title}>
                     {title}
-                </h1>
+                    </h1>
+                </a>
             </AnimateKeyframes>
         </main>
     )

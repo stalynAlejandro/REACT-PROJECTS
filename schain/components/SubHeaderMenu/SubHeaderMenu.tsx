@@ -13,7 +13,7 @@ interface IOption {
 const Option = (args: IOption) => {
     const text = {
         fontFamily: 'Gruppo',
-        fontSize: 20
+        fontSize: 22
     }
 
     const container = {
@@ -41,7 +41,7 @@ const Option = (args: IOption) => {
 
     return (
         <div className={styles.optionContainer} onMouseOver={() => args.setShowMenu(args.title)} >
-            <TouchableOpacity style={(args.title === args.selected) ? styles.optionContainerActive : stylesNative.optionContainerInctive} onPress={() => args.setOption(args.title)}>
+            <TouchableOpacity style={(args.title === args.selected) ? stylesNative.optionContainerActive : stylesNative.optionContainerInctive} onPress={() => args.setOption(args.title)}>
                 <Text style={(args.title === args.selected) ? stylesNative.option : stylesNative.optionActive}>{args.title}</Text>
             </TouchableOpacity >
         </div>

@@ -16,7 +16,7 @@ import styles from '../styles/Home.module.css'
 
 function HomePage() {
 
-    const [selected, setSelected] = useState<string>('');
+    const [selected, setSelected] = useState<string>('home');
     const [showMenu, setShowMenu] = useState<string>('');
 
     return (
