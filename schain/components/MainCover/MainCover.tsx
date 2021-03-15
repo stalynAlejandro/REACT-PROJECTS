@@ -10,7 +10,7 @@ function MainCover() {
                 <Image src={'/images/discount.png'} alt={"Picture of a bussiness"} layout={'intrinsic'} width={1400} height={150} />
             </AnimateKeyframes>
             <AnimateKeyframes play duration={1} keyframes={["opacity: 0", "opacity:1"]}>
-                <Image src={'/images/fingers.png'} alt={"Picture of a bannana"} layout={'intrinsic'} width={1400} height={500} />
+                <Image src={'/images/frontImage.png'} alt={"Picture of a bannana"} layout={'intrinsic'} width={1400} height={500} />
             </AnimateKeyframes>
         </div>
     )

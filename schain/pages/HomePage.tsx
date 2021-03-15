@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
-import { 
-    MainCover, 
-    HeaderMenu, 
-    Footer, 
-    TitleMain, 
-    SubHeaderMenu, 
-    SubMenuContent, 
-    PulserasContent, 
-    RelojesContent, 
-    CollaresContent, 
-    SombrerosContent 
+import {
+    MainCover,
+    HeaderMenu,
+    Footer,
+    TitleMain,
+    SubHeaderMenu,
+    SubMenuContent,
+    PulserasContent,
+    RelojesContent,
+    CollaresContent,
+    SombrerosContent,
+    Vibes
 } from '../components'
 import styles from '../styles/Home.module.css'
 
@@ -33,12 +34,17 @@ function HomePage() {
 
             <div className={styles.content}>
                 <MainCover />
+
                 {(selected === 'home') && <PulserasContent />}
                 {(selected === 'pulseras') && <PulserasContent />}
                 {(selected === 'relojes') && <RelojesContent />}
                 {(selected === 'collares') && <CollaresContent />}
                 {(selected === 'sombreros') && <SombrerosContent />}
+            
+                <Vibes />
+            
             </div>
+
 
             <Footer />
         </div>
