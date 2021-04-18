@@ -23,6 +23,7 @@ function SignUp() {
     }
 
     const handleSubmit = (e: any) => {
+        e.preventDefault()   //Prevents the page to reload.
         console.log(state)
     }
 

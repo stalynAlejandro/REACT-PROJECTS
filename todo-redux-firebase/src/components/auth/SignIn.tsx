@@ -5,18 +5,23 @@ interface IUser {
     password: string
 }
 
+const initialUser: IUser = {
+    email: '',
+    password: ''
+}
+
 function SignIn() {
 
-    const [state, setState] = useState<IUser>({ email: '', password: '' })
+    const [state, setState] = useState<IUser>(initialUser)
 
     const handleChange = (e: any) => {
         setState({ ...state, [e.target.id]: e.target.value })
     }
 
     const handleSubmit = (e: any) => {
+        e.preventDefault()  //Prevents the page to reload
         console.log(state)
     }
-
 
     return (
 
