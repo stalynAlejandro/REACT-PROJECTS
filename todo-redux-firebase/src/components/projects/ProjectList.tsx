@@ -1,9 +1,14 @@
 import React from 'react'
+import { ProjectSummary } from './ProjectSummary'
 
-export default function ProjectList() {
+const ProjectList = () => {
     return (
-        <div>
-            <p>ProjectList</p>
+        <div className="project-list section">
+            <ProjectSummary />
+            <ProjectSummary />
+            <ProjectSummary />
         </div>
     )
 }
+
+export { ProjectList }
