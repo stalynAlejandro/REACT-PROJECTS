@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-
-interface IProject {
-    title: string,
-    content: string
-}
+import { useDispatch } from 'react-redux'
+import { createProject } from '../../store/actions/projectActions'
+import { IProject } from '../../store/reducers/projectReducer'
 
 const initialProject: IProject = {
+    id: '',
     title: '',
     content: ''
 }
 
 function CreateProject() {
 
+    const dispatch = useDispatch()
     const [state, setState] = useState<IProject>(initialProject)
 
     const handleChange = (e: any) => {
@@ -20,7 +20,7 @@ function CreateProject() {
 
     const handleSubmit = (e: any) => {
         e.preventDefault()  //Prevents the page to reload. 
-        console.log(state)
+        dispatch(createProject(state))
     }
 
     return (
