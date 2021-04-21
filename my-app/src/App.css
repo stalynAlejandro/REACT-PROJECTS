@@ -1,0 +1,79 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1px;
+  margin: 0px auto;
+  width: 80%;
+  min-height: 100vh;
+  background-color: #1E1E1E;
+}
+
+.App .head-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #373e40cb;
+  border-radius: 10px;
+  width: 90%;
+  height: 3rem;
+  margin-top: 20px;
+}
+
+.App .title {
+  color: #BB86FC;
+  font-family: 'Lobster';
+}
+
+.App .contentContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 92%;
+}
+
+.App .hooksContainer {
+  width: 50%;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #373e40cb;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.App .hooks-title {
+  color: #00C4B4;
+  margin-left: 20px;
+  font-family: 'Lobster';
+}
+
+.App .hooks-list {
+  list-style: none;
+}
+
+.App ul li {
+  margin: 15px;
+  color: #07f576;
+  font-family: 'Varela Round';
+  font-size: larger;
+}
+
+.App ul li:hover {
+  margin: 15px;
+  color: #bfe41e;
+  font-family: 'Varela Round';
+  font-size: larger;
+  cursor: pointer
+}
+
+@media(max-width: 880px) {
+  .App {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
