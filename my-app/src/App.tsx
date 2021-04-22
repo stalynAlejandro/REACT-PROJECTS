@@ -1,6 +1,14 @@
 import './App.css';
 import { Dispatch, SetStateAction, useState } from 'react'
 import { Animate } from 'react-simple-animate'
+import { UseEffectComponent } from './components/UseEffectComponent'
+import UseCallBackComponent from './components/UseCallBackComponent';
+import UseContextComponent from './components/UseContextComponent';
+import UseImperativeHandlerComponent from './components/UseImperativeHandlerComponent';
+import UseMemoComponent from './components/UseMemoComponent';
+import UseReducerComponent from './components/UseReducerComponent';
+import UseRefComponent from './components/UseRefComponent';
+import UseStateComponent from './components/UseStateComponent'
 
 const HOOKS = {
   useState: 'useState',
@@ -14,6 +22,29 @@ const HOOKS = {
   useLayoutEffect: 'useLayoutEffect',
   useDebugValue: 'useDebugValue'
 }
+
+interface IHookExplained {
+  selected: string
+}
+
+const HookExplained = (args: IHookExplained) => {
+  return (
+    <div className="hooksContainer">
+      <h2 className="hooks-title">
+        {args.selected}
+      </h2>
+      {args.selected === HOOKS.useState && <UseStateComponent />}
+      {args.selected === HOOKS.useEffect && <UseEffectComponent />}
+      {args.selected === HOOKS.useCallBack && <UseCallBackComponent />}
+      {args.selected === HOOKS.useContext && <UseContextComponent />}
+      {args.selected === HOOKS.useImperativeHandler && <UseImperativeHandlerComponent />}
+      {args.selected === HOOKS.useMemo && <UseMemoComponent />}
+      {args.selected === HOOKS.useReducer && <UseReducerComponent />}
+      {args.selected === HOOKS.useRef && <UseRefComponent />}
+    </div>
+  )
+}
+
 
 interface IHookOptions {
   title: string,
@@ -62,8 +93,7 @@ function App() {
       <HeadBar text="React Hooks Explained" />
       <div className="contentContainer">
         <HookOptions title={"Hooks"} selected={selectedHook} setSelected={setselectedHook} />
-
-        {/* <HookOptions /> */}
+        <HookExplained selected={selectedHook} />
       </div>
     </div>
   );
