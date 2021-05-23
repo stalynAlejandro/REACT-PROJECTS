@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import Posts from "./components/Posts";
+import Pagination from "./components/Pagination";
 import { Post } from "./Types";
 import axios from "axios";
 import "./App.css";
@@ -7,7 +9,7 @@ function App() {
   const [posts, setPosts] = useState<[Post] | []>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [currrentPage, setCurrentPage] = useState<number>(1);
-  const [postPerPage, setPostPerPage] = useState<number>(10);
+  const [postsPerPage, setPostsPerPage] = useState<number>(10);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -20,11 +22,25 @@ function App() {
     fetchPosts(); // Call the function.
   }, []); //Empty array only runs when it mounts.
 
-  console.log("POSTS", posts);
+  // Get current posts
+  const indexOfLastPost = currrentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts: [Post] = posts.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  ) as [Post];
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <div>
+    <div className={"container mt-5"}>
       <h1>My App</h1>
+      <Posts posts={currentPosts} loading={loading} />
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={posts.length}
+        paginate={paginate}
+      />
     </div>
   );
 }
