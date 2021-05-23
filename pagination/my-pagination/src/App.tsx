@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Posts from "./components/Posts";
 import Pagination from "./components/Pagination";
+import Headers from './components/Headers';
 import { Post } from "./Types";
 import axios from "axios";
 import "./App.css";
@@ -35,6 +36,7 @@ function App() {
   return (
     <div className={"container mt-5"}>
       <h1>My App</h1>
+      <Headers />
       <Posts posts={currentPosts} loading={loading} />
       <Pagination
         postsPerPage={postsPerPage}
