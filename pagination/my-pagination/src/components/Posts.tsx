@@ -1,7 +1,7 @@
 import { Post } from "../Types";
 
 interface IPosts {
-  posts: Post;
+  posts: [Post];
   loading: number;
 }
 const Posts = ({ posts, loading }: IPosts) => {
@@ -11,11 +11,12 @@ const Posts = ({ posts, loading }: IPosts) => {
 
   return (
     <ul className={"list-group mb-4"}>
-      {posts.map((post) => (
-        <li key={post.id} className={"list-group-item"}>
-          {post.title}
-        </li>
-      ))}
+      {Array.isArray(posts) &&
+        posts.map((post) => (
+          <li key={post.id} className={"list-group-item"}>
+            {post.title}
+          </li>
+        ))}
     </ul>
   );
 };
