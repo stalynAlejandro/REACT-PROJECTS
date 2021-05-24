@@ -1,1 +1,6 @@
-
+.app-container{
+    display: flex;
+    flex-direction: column;
+    margin: 5rem;
+    margin-top: 5rem;
+}

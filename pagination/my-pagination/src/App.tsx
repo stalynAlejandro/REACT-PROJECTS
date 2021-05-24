@@ -34,8 +34,7 @@ function App() {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <div className={"container mt-5"}>
-      <h1>My App</h1>
+    <div className={"app-container"}>
       <Headers />
       <Posts posts={currentPosts} loading={loading} />
       <Pagination
