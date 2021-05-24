@@ -1,17 +1,37 @@
 import React from "react";
 
-interface IHeaders {
+interface ICustomHeader {
   title: string;
-  searchable: boolean;
   sortable: boolean;
+  searchable: boolean;
+  content: string;
 }
 
-const Headers = ({ title, searchable, sortable }: IHeaders) => {
+const CustomHeader = ({
+  title,
+  sortable,
+  searchable,
+  content,
+}: ICustomHeader) => {
   return (
     <div>
       <span>{title}</span>
-      <span>{searchable ?? "searchable"}</span>
       <span>{sortable ?? "sortable"}</span>
+      <span>{searchable ?? "searchable"}</span>
+      <span>{content}</span>
+    </div>
+  );
+};
+
+const Headers = () => {
+  return (
+    <div>
+      <CustomHeader
+        title={"ID"}
+        sortable={true}
+        searchable={true}
+        content={"12345"}
+      />
     </div>
   );
 };
