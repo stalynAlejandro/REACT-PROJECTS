@@ -1,0 +1,301 @@
+////////////////
+// TYPOGRAPHY //
+////////////////
+
+// Font families
+$font-primary: "Open Sans", sans-serif;
+$font-secondary: "Rubik";
+// Font weights
+$font-weight-extra-light: 200;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-black: 900;
+// Font-sizes
+$font-size-xs: 0.75rem;
+$font-size-s: 0.875rem;
+$font-size-m: 1rem;
+$font-size-ml: 1.125rem;
+$font-size-l: 1.25rem;
+$font-size-xl: 1.5rem;
+
+// Google Fonts imports
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,800|Open+Sans:400,400i,700|Rubik:400,400i,700");
+
+///////////
+// COLOR //
+///////////
+
+// Primary color
+$color-primary-brighter-2: #b8dcec;
+$color-primary-brighter-1: #7ebedc;
+$color-primary: #319acb;
+$color-primary-hover: #356379;
+$color-primary-darker-1: #387c9b;
+$color-primary-darker-2: #7687c3;
+$color-primary-darker-3: #25576e;
+$color-primary-darker-4: #7c8285;
+// Secondary color
+$color-secondary-brighter-2: #f4afbe;
+$color-secondary-brighter-1: #f38099;
+$color-secondary: #ee4266;
+$color-secondary-darker-1: #be3652;
+$color-secondary-darker-2: #7a1f32;
+// System feedback
+$color-system-feedback-success: #18b549;
+$color-system-feedback-success-2: #62c3a3;
+$color-system-feedback-success-3: #92c089;
+$color-system-feedback-success-3-disabled_dark: #4f5f5c;
+$color-system-feedback-success-3-disabled_light: #e9f2e7;
+$color-system-feedback-success-4: #3cb371;
+$color-system-feedback-error: #e37272;
+$color-system-feedback-error-disabled_dark: #5b5358;
+$color-system-feedback-error-disabled_light: #f9e3e3;
+$color-system-feedback-warning: #e9c417;
+$color-system-feedback-warning-disabled_dark: #5c5f4b;
+$color-system-feedback-warning-disabled_light: #fbf3d1;
+$color-system-feedback-info: #179ce9;
+$color-system-feedback-disabled: #bbbbbb;
+// Charts series
+$color-chart-serie-1: #8adffa;
+$color-chart-serie-2: #65b3cc;
+$color-chart-serie-3: #5c92b5;
+$color-chart-serie-4: #0ba3d5;
+$color-chart-serie-5: #258497;
+$color-chart-serie-6: #397ac3;
+$color-chart-serie-7: #77e9d5;
+$color-chart-serie-8: #58c0bc;
+$color-chart-serie-9: #42b288;
+$color-chart-serie-10: #f7ffe4;
+$color-chart-serie-11: #e5ffcb;
+$color-chart-serie-12: #c8f19f;
+$color-chart-serie-13: #56c875;
+$color-chart-serie-14: #92c089;
+$color-chart-serie-15: #beedfc;
+$color-chart-serie-16: #83b0ff;
+$color-chart-serie-17: #7e84f3;
+$color-chart-serie-18: #9268d9;
+$color-chart-serie-19: #e5ffcb;
+$color-chart-serie-defaultLabelText: #b6b6b6;
+
+// Text Black
+$color-text-black-base: #343434;
+$color-text-black-brighter-1: #5c5c5c;
+$color-text-black-brighter-2: #838383;
+// Text White
+$color-text-white-base: #ffffff;
+$color-text-white-darker-1: #c6c6c6;
+$color-text-white-darker-2: #b2b2b2;
+$color-text-transparent-grey: rgba(255, 255, 255, 0.2);
+// Background, panels, modals... for Light Mode
+$color-background-light-1: #ffffff;
+$color-background-light-2: #f3f3f3;
+$color-background-light-3: #d5d5d5;
+$color-background-light-4: #bbbbbb;
+$color-background-light-5: #c6c6c6;
+$color-background-light-6: #a6a6a6;
+$color-background-light-7: #f7f7f7;
+// Background, panels, modals... for Dark Mode
+$color-background-dark-1: #565f64;
+$color-background-dark-2: #444e54;
+$color-background-dark-3: #3f484d;
+$color-background-dark-4: #373f44;
+$color-background-dark-5: #31383c;
+$color-background-dark-6: #1a1e20;
+$color-background-dark-7: #292f32;
+$color-background-dark-8: #2b3135;
+// Scrollbar
+$color-scrollbar-light: #797c7d;
+$color-scrollbar-dark: #2d2d2d;
+// Custom TextField
+$color-background-simple-textfied-dark: #292f30;
+$color-background-simple-textfied-light: #ffffff;
+//transparent-light-grey
+$color-line-separator: #394147;
+$color-background-transparent-light-grey: rgba(216, 216, 216, 0.07);
+$color-background-disabled-grey: rgba(227, 227, 227, 0.7);
+$color-background-hovered-grey: rgba(227, 227, 227, 0.8);
+//transparent-dark-grey
+$color-background-transparent-dark-grey: rgba(70, 70, 75, 0.8);
+$color-background-dark-grey: rgba(67, 78, 84, 0.8);
+$color-light-grey: #9fa3a6;
+$color-background-transparent-dark-04: rgba(0, 0, 0, 0.4);
+
+/* Checkbox */
+$color-checkbox-disabled: #4f5960;
+$color-checkbox-text: #8e9498;
+$color-black-dark: #000;
+
+/* Ellipsis */
+$color-background-body-hover-light: #ffffff;
+$color-background-body-hover-dark: #2f363b;
+
+/* Custom Scroll */
+$color-scroll-background-color-dark: rgba(45, 45, 45, 0.3);
+$color-scroll-background-dark: rgb(45, 45, 45);
+$color-scroll-background-corner-dark: rgba(0, 0, 0, 0);
+$color-scroll-scrollbar-dark: rgb(45, 45, 45) rgba(45, 45, 45, 0.3);
+
+$color-scroll-background-color-light: #babbbc;
+$color-scroll-background-light: #797c7d;
+$color-scroll-background-corner-light: #babbbc;
+$color-scroll-scrollbar-light: #797c7d #babbbc;
+
+///////////////
+// ELEVATION //
+///////////////
+
+// Note: Use it for box-shadow CSS property
+
+$elevation-1: 0 0 2px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1),
+    0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+$elevation-2: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 3px 4px 0 rgba(0, 0, 0, 0.16),
+    0 1px 5px 0 rgba(0, 0, 0, 0.16);
+$elevation-3: 0 3px 3px 0 rgba(0, 0, 0, 0.16), 0 3px 4px 0 rgba(0, 0, 0, 0.18),
+    0 1px 8px 0 rgba(0, 0, 0, 0.2);
+$elevation-4: 0 2px 4px 0 rgba(0, 0, 0, 0.14), 0 4px 5px 0 rgba(0, 0, 0, 0.16),
+    0 1px 10px 0 rgba(0, 0, 0, 0.18);
+$elevation-5: 0 5px 10px 0 rgba(0, 0, 0, 0.14), 0 2px 6px 0 rgba(0, 0, 0, 0.16),
+    0 2px 8px 0 rgba(0, 0, 0, 0.18);
+$elevation-6: 0 6px 10px 0 rgba(0, 0, 0, 0.16), 0 1px 12px 0 rgba(0, 0, 0, 0.18),
+    0 3px 5px 0 rgba(0, 0, 0, 0.2);
+
+$elevation-bottom: 0 1px 0px 0 rgba(0, 0, 0, 0.12),
+    0 2px 0px 0 rgba(0, 0, 0, 0.15), 0 1px 0px 0 rgba(0, 0, 0, 0.1);
+$elevation-portal: 0 0 10px 2px rgba(0, 0, 0, 0.35);
+$popover-tooltip-elevation: 1px 3px 2px rgba(0, 0, 0, 0.4);
+
+/////////////
+// SPACING //
+/////////////
+$spacing-xxxs: 4px;
+$spacing-xxs: 8px;
+$spacing-xms: 12px;
+$spacing-xs: 16px;
+$spacing-s: 24px;
+$spacing-m: 32px;
+$spacing-l: 40px;
+$spacing-xl: 48px;
+$spacing-xxl: 56px;
+
+/////////////
+// FONTS //
+/////////////
+
+$font-xxs: 8px;
+$font-xmms: 10px;
+$font-xms: 12px;
+$font-xs: 14px;
+$font-s: 16px;
+$font-m: 18px;
+$font-l: 20px;
+$font-xl: 22px;
+$font-xxl: 24px;
+$font-xxxl: 26px;
+$font-xxxml: 28px;
+$font-xxxxl: 32px;
+
+//////////
+// MISC //
+//////////
+
+$box-border-radius: 4px;
+$panel-margin: 10px;
+$widget-min-height: 200px;
+$small-border-radius: 7px;
+
+//////////
+// NEW //
+//////////
+$color-background-dark-2: #444e54;
+$color-background-light-2: #f3f3f3;
+
+$color-border-dark: 1px solid #353f45;
+$color-border-light: 1px solid #d5d5d5;
+
+$color-border-color-dark: #353f45;
+$color-border-color-light: #d5d5d5;
+
+$color-text-legend-dark: #ededed;
+$color-text-legend-light: #343434;
+
+$color-legend-header-dark: #3f484d;
+$color-legend-header-light: #f3f3f3;
+
+$color-background-row-dark: #565f64;
+$color-background-row-light: #d2d2d2;
+
+$color-background-search-dark: #373f44;
+$color-background-search-light: #d8d8d8;
+
+$color-text-search-dark: #c6c6c6;
+$color-text-search-light: #0a0a0a;
+
+$color-header-tile-dark: #3f484d;
+$color-header-tile-light: #f3f3f3;
+
+$color-header-text-tile-dark: #fff;
+$color-header-text-tile-light: #000;
+
+$color-boder-search-dark: 1px solid #292f30;
+$color-boder-search-light: 1px solid #979797;
+
+$color-picker-dark: #3f484d;
+$color-picker-light: #d5d5d5;
+
+$color-picker-button-dark: #fff;
+$color-picker-button-light: #000;
+
+$color-picker-day-hover-dark: #e4e7e7;
+$color-picker-day-hover-light: #fff;
+
+$color-gradient-dark: linear-gradient(180deg, #373f44 0%, #31383c 100%);
+$color-gradient-light: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    #e8e8e8 100%
+);
+
+$color-input-background-light: #f3f3f3;
+$color-input-background-dark: #373f44;
+
+$main-circular-progressbar-size: 125px;
+$main-circular-progressbar-size-small: 90px;
+$main-semicircular-progressbar-size: 148px;
+$main-semicircular-progressbar-height: 148px;
+$main-semicircular-progressbar-container-size: 180px;
+$main-semicircular-progressbar-container-height: 100px;
+
+$color-progressbar-fill-blue-dark: #39b6c5;
+$color-progressbar-fill-lightgreen-light: #92c089;
+
+$color-progressbar-background-dark: #21383c;
+
+$chart-scrollbar-track-color: rgba(26, 30, 32, 0.3);
+$chart-scrollbar-thumb-color: rgba(26, 30, 32, 0.4);
+
+$map-error-location-background-color-dark: #3d464b;
+$map-error-location-background-color-light: #dadada;
+
+$tooltip-background-color-dark: #373f44;
+$tooltip-background-color-light: #f3f3f3;
+
+$tooltip-border-color-dark: transparent transparent #373f44 transparent;
+$tooltip-border-color-light: transparent transparent #f3f3f3 transparent;
+
+$tooltip-key-text1-color-dark: #ffffff;
+$tooltip-key-text1-color-light: #5c5c5c;
+
+$tooltip-key-text2-color-dark: #c6c6c6;
+$tooltip-key-text2-color-light: #8e8e8e;
+
+$tooltip-separator-color-dark: #292f30;
+$tooltip-separator-color-light: #c6c6c6;
+
+$color-text-placeholder-dark: #c6c6c6;
+$color-text-placeholder-light: #3a3a3a;
+
+$color-toast-background-dark: #32383d;
+$color-toast-background-light: #f3f3f3;
