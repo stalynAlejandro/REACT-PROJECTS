@@ -1,0 +1,73 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { Button } from "../../components/button";
+
+<Meta title="Button" component={Button} />
+
+export const Template = (args) => {
+  return <Button {...args} />;
+};
+
+# Button
+
+The `Button` is a standard component.
+
+<Story
+  name="Button"
+  argTypes={{
+    textButton: {
+      control: {
+        type: "text",
+      },
+    },
+    color: {
+      control: {
+        type: "select",
+        options: ["blue", "gray", "transparent", "transparent-outlined"],
+      },
+    },
+    css: {
+      control: {
+        type: "text",
+      },
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+    },
+    size: {
+      control: {
+        type: "select",
+        options: ["l", "m", "s"],
+      },
+    },
+    ctaButton: {
+      control: {
+        type: "boolean",
+      },
+    },
+    onClickedButton: { action: "Clicked!" },
+  }}
+  args={{
+    textButton: "Click Me",
+    color: "blue",
+    css: "",
+    disabled: false,
+    size: "m",
+    ctaButton: false,
+  }}
+>
+  {Template.Bind({})}
+</Story>
+
+Los diferentes `props` que puede recibir son los siguientes.
+
+| **Prop**     | **Tipo**                                           | **Valor por defecto** | **Descripción**                               |
+| :----------- | :------------------------------------------------- | :-------------------- | :-------------------------------------------- |
+| `textButton` | `string`                                           | `undefined`           | Determina el texto que se muestra en el botón |
+| `color`      | `blue` `gray` `transparent` `transparent-outlined` | `blue`                | Determina el color y demás estilos del botón  |
+| `css`        | `string`                                           | `undefined`           | Permite añadir estilos adicionales de CSS     |
+| `disabled`   | `boolean`                                          | `false`               | Determina si el botón estará deshabilitado    |
+| `iconButton` | `React.ReactNode`                                  | `undefined`           | Determina el componente icono del botón       |
+| `size`       | `l` `m` `s`                                        | `m`                   | Determina el tamaño del botón                 |
+| `ctaButton`  | `boolean`                                          | `false`               | Determina si el botón será de tipo `cta`      |
