@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Posts from "./components/Posts";
 import Pagination from "./components/Pagination";
-import Headers from './components/Headers';
+import Headers from "./components/Headers";
 import { Post } from "./Types";
 import axios from "axios";
 import "./App.css";
