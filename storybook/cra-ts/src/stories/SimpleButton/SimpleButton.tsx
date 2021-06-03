@@ -39,6 +39,7 @@ export const SimpleButton: FC<TSimpleButton> = ({
         " "
       )}
       style={{ backgroundColor }}
+      onClick={onClick}
       {...props}
     >
       {label}

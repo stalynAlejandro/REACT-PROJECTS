@@ -16,10 +16,12 @@ const Template: Story<TSimpleButton> = (args) => <SimpleButton {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
-  label: "Primary SimpleButton",
+  label: "SimpleButton",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: "Secondary Button",
+  label: "SimpleButton",
+  backgroundColor: "#FFAA",
+  onClick: () => console.log("hello world"),
 };
