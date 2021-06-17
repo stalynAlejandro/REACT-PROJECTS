@@ -1,0 +1,52 @@
+@import "./styles-utils.scss";
+
+.select-search {
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 11px;
+}
+
+.select-search-input {
+    display: flex;
+    box-sizing: border-box;
+    max-height: 32px;
+    width: 100%;
+    @include themify($themes) {
+        border: themed("borderColor");
+        background-color: themed("panelBackgroundColor");
+        color: themed("textBase");
+    }
+    border-radius: 2px;
+    font-family: $font-primary;
+    font-size: 0.875rem;
+    letter-spacing: 0;
+    line-height: 19px;
+    padding-left: 10px;
+}
+
+.select-search-input--xl {
+    height: 32px;
+}
+
+.select-search-input--l,
+.select-search-input--m,
+.select-search-input--s {
+    height: 30px;
+}
+
+.select-search-icon {
+    position: absolute;
+    right: 24px;
+    svg {
+        width: 15px;
+        height: 15px;
+
+        path {
+            @include themify($themes) {
+                fill: themed("iconColor");
+            }
+        }
+    }
+}

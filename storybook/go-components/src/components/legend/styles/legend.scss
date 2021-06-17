@@ -1,0 +1,66 @@
+@import "./styles-utils.scss";
+
+.legend {
+    &__container {
+        font-family: $primary-font;
+        font-size: 0.75rem;
+        margin-right: 12px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16),
+            0 3px 4px 0 rgba(0, 0, 0, 0.16), 0 1px 5px 0 rgba(0, 0, 0, 0.16);
+
+        &.hidden {
+            width: min-content;
+            float: right;
+            margin-right: 0 !important;
+        }
+
+        .title {
+            padding: 16px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            @include themify($themes) {
+                background: themed("PanelHeader");
+                color: themed("TextBase");
+            }
+
+            .icon {
+                height: 16px;
+                width: 16px;
+                cursor: pointer;
+                text-align: right;
+
+                svg {
+                    height: 16px;
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 7px 14px 7px 10px;
+
+            @include themify($themes) {
+                color: themed("TextBase");
+
+                &:nth-child(even) {
+                    background: themed("PanelItemEven");
+                }
+
+                &:nth-child(odd) {
+                    background: themed("PanelItemOdd");
+                }
+            }
+
+            .color {
+                height: 12px;
+                width: 12px;
+                border-radius: 100%;
+                margin-top: 2px;
+            }
+        }
+    }
+}

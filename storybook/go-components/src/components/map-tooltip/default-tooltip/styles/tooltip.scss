@@ -1,0 +1,58 @@
+@import "src/styles/tokens.scss";
+@import "../../../../styles/styles-utils.scss";
+
+.gis-tooltip {
+    position: absolute;
+    pointer-events: none;
+    font-weight: 300;
+    font-family: $font-primary;
+    opacity: 1;
+    z-index: 2;
+    @include themify($themes) {
+        background-color: themed("tooltipBackgroundColor");
+    }
+    border-radius: 0.3125rem;
+    padding: 0.625rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0.1875rem 3px 0 rgba(0, 0, 0, 0.16),
+        0 0.1875rem 0.25rem 0 rgba(0, 0, 0, 0.18),
+        0 0.0625rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+
+    &.invisible {
+        display: none;
+    }
+
+    &::after {
+        content: " ";
+        position: absolute;
+        bottom: 100%;
+        left: 1.875rem;
+        margin-left: -0.3125rem;
+        border-width: 0.625rem;
+        border-style: solid;
+        @include themify($themes) {
+            border-color: themed("tooltipBorderColor");
+        }
+    }
+}
+
+.info-row {
+    font-family: $font-primary;
+    font-size: 0.75rem;
+    line-height: 1.0625rem;
+    margin: 0.3125rem 0;
+}
+
+.info-row__key {
+    @include themify($themes) {
+        color: themed("tooltipText2Color");
+    }
+}
+
+.info-row__value {
+    @include themify($themes) {
+        color: themed("tooltipText1Color");
+    }
+    font-weight: 400;
+}

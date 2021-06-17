@@ -1,0 +1,206 @@
+@import "../../../styles/styles-utils.scss";
+
+.sidenav__wrapper {
+    display: flex;
+    flex-direction: column;
+    @include themify($themes) {
+        color: themed("textColorBase");
+        background-color: themed("panelBackgroundColor");
+    }
+    z-index: 99;
+    transition: width 0s;
+    font-family: $font-primary;
+    width: 65px;
+    box-shadow: $elevation-3;
+
+    .sidenav__top-menu {
+        flex-grow: 1;
+        padding: 15px 0;
+        .top-buttons,
+        .middle-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .sidenav__bottom-menu {
+        display: flex;
+        flex-direction: column;
+
+        .bottom-buttons {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &--expanded {
+        min-width: 250px;
+        max-width: 250px;
+        .sidenav-icon,
+        .sidenav-icon-top {
+            padding: 9px 18px;
+        }
+        .sidenav__top-menu {
+            .top-buttons,
+            .middle-buttons {
+                align-items: stretch;
+                padding: 0 12px;
+            }
+        }
+        @media (max-width: 768px) {
+            .sidenav__top-menu .trigger-icons {
+                display: flex;
+                & div:first-child {
+                    margin-right: 16px;
+                }
+                & .icon {
+                    cursor: pointer;
+                }
+            }
+            .sidenav__menu-separator {
+                &.--mobile-expanded-view {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.no-sidenav-icons {
+    display: none;
+}
+
+.sidenav-icon-top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    min-width: 40px;
+    font-size: 1.25rem;
+    height: 40px;
+    padding: 9px;
+    box-sizing: border-box;
+    cursor: pointer;
+    svg {
+        width: 21px;
+        height: 38px;
+        max-height: 21px;
+        path {
+            @include themify($themes) {
+                fill: themed("iconColor");
+            }
+        }
+    }
+    &--active {
+        svg {
+            width: 21px;
+            height: 22px;
+            path {
+                @include themify($themes) {
+                    fill: themed("iconColorActive") !important;
+                }
+            }
+        }
+    }
+}
+
+.sidenav-icon {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: auto;
+    min-width: 40px;
+    font-size: 1.25rem;
+    height: 40px;
+    padding: 9px;
+    box-sizing: border-box;
+    cursor: pointer;
+    svg {
+        width: 21px;
+        height: 38px;
+        max-height: 21px;
+        path {
+            @include themify($themes) {
+                fill: themed("iconColor");
+            }
+        }
+    }
+    &--active {
+        svg {
+            path {
+                @include themify($themes) {
+                    fill: themed("iconColorActive");
+                }
+            }
+        }
+    }
+}
+
+.sidenav-icon-space {
+    display: flex;
+    width: 100%;
+    height: 12px;
+}
+
+.sidenav-icon:hover,
+.sidenav-icon-top:hover {
+    border-radius: 20px;
+    color: $color-text-white-base;
+    background-color: $color-background-dark-4 !important;
+    svg {
+        path {
+            @include themify($themes) {
+                fill: themed("iconColorActive");
+            }
+        }
+    }
+}
+
+.sidenav-icon--active,
+.sidenav-icon-top--active {
+    border-radius: 20px;
+    color: $color-text-white-base;
+    background-color: $color-primary !important;
+}
+
+.menu-separator {
+    margin: 13.504px 0;
+    height: 2px;
+    width: 65px;
+    background-color: $color-black-dark;
+    opacity: 0.15;
+}
+
+.menu-separator--expanded {
+    margin: 13.504px 0;
+    height: 2px;
+    width: 100%;
+    background-color: $color-black-dark;
+    opacity: 0.15;
+}
+
+.sidenav-nameicon-top {
+    font-family: $font-primary;
+    font-size: 1rem;
+    margin-left: 16px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidenav-nameicon {
+    font-family: $font-primary;
+    font-size: 1rem;
+    margin-left: 16px;
+}
+
+.sidenav-no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

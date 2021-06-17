@@ -1,0 +1,84 @@
+@import "./styles-utils.scss";
+
+.select-names {
+    max-width: 300px;
+    height: auto;
+    position: relative;
+
+    &.disabled{
+        div{
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    .select-label {
+        @include themify($themes) {
+            color: themed("TextBase");
+        }
+        height: 22px;
+        font-family: $font-primary;
+        font-size: 1rem;
+        letter-spacing: 0;
+        line-height: 22px;
+        margin-bottom: 9px;
+    }
+    .select-items {
+        @include themify($themes) {
+            background-color: themed("selectorBackgroundColor");
+        }
+    }
+    .select-dropdown {
+        position: absolute;
+        width: 100%;
+        min-height: 100px;
+        max-height: 220px;
+        border-radius: 2px;
+        z-index: 10;
+        top: 100%;
+        margin-top: 5px;
+        padding-bottom: 5px;
+        @include themify($themes) {
+            background-color: themed("selectorBackgroundColor");
+        }
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16),
+            0 3px 4px 0 rgba(0, 0, 0, 0.16), 0 1px 5px 0 rgba(0, 0, 0, 0.16);
+    }
+}
+
+.select-names-size--xl {
+    width: 300px;
+    .select-items {
+        height: 40px;
+    }
+}
+
+.select-names-size--l {
+    width: 236px;
+    .select-items {
+        height: 32px;
+    }
+}
+
+.select-names-size--m {
+    width: 205px;
+    .select-items {
+        height: 32px;
+    }
+}
+
+.select-names-size--s {
+    width: 175px;
+    .select-items {
+        height: 32px;
+    }
+}
+
+.select-names-no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

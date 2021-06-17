@@ -1,0 +1,29 @@
+@import "./styles-utils.scss";
+
+.multiselect-item-title {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+    padding: 4px 11px;
+    @include themify($themes) {
+        color: themed("colorBase");
+    }
+    font-family: $font-primary;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    &--selected {
+        width: 100%;
+        height: 100%;
+        padding: 4px 11px;
+        @include themify($themes) {
+            color: themed("colorBase");
+        }
+        font-family: $font-primary;
+        font-size: 0.875rem;
+        background-color: $color-selected-item-selector;
+        border-radius: 16px;
+    }
+}

@@ -1,0 +1,62 @@
+@import "./styles-utils.scss";
+
+.multiselect-search {
+    display: flex;
+    height: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.9375rem;
+    margin-bottom: 0.9375rem;
+}
+
+input::placeholder {
+    @include themify($themes) {
+        color: themed("placeholderColor");
+    }
+}
+
+input:focus {
+    outline: none;
+}
+
+.multiselect-search-input {
+    display: flex;
+    box-sizing: border-box;
+    max-height: 2rem;
+    width: 18.5rem;
+    @include themify($themes) {
+        border: themed("borderColor");
+        background-color: themed("panelBackgroundColor");
+        color: themed("colorSearchInput");
+    }
+    border-radius: 0.125rem;
+    font-family: $font-primary;
+    font-size: 0.875rem;
+    letter-spacing: 0;
+    line-height: 1.1875rem;
+    padding-left: 0.625rem;
+}
+
+.multiselect-search-input--l {
+    height: 2rem;
+}
+
+.multiselect-search-input--m {
+    height: 1.875rem;
+}
+
+.multiselect-search-icon {
+    position: absolute;
+    top: 1.4375rem;
+    right: 1.4375rem;
+    svg {
+        width: 0.9375rem;
+        height: 0.9375rem;
+
+        path {
+            @include themify($themes) {
+                fill: themed("iconColor");
+            }
+        }
+    }
+}

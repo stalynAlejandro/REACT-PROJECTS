@@ -1,0 +1,72 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+import NumericRangeInput from "../../components/numeric-range-input";
+
+<Meta title="NumericRangeInput" component={NumericRangeInput} />
+
+export const Template = (args) => {
+    return <NumericRangeInput {...args} />;
+};
+
+# NumericRangeInput
+
+El `NumericRangeInput` es un componente que nos permite especificar un rango de valores mínimo y máximo.
+
+<Story
+    name="NumericRangeInput"
+    argTypes={{
+        size: {
+            control: {
+                type: "select",
+                options: ["l", "m", "s"],
+            },
+        },
+        label: {
+            control: {
+                type: "text",
+            },
+        },
+        minValuePlaceholder: {
+            control: {
+                type: "text",
+            },
+        },
+        maxValuePlaceholder: {
+            control: {
+                type: "text",
+            },
+        },
+        alternative: {
+            control: {
+                type: "boolean",
+            },
+        },
+        disabled: {
+            control: {
+                type: "boolean",
+            },
+        },
+        onChange: {
+            action: "Range: ",
+        },
+    }}
+    args={{
+        label: "Number range",
+        minValuePlaceholder: "Min val",
+        maxValuePlaceholder: "Max val",
+        alternative: false,
+        disabled: false,
+        size: "m",
+    }}
+>
+    {Template.bind({})}
+</Story>
+
+Los diferentes `props` que puede recibir son los siguietnes.
+
+| **Prop**              | **Tipo**   | **Valor por defecto**  | **Descripción**                                                                         |
+| :-------------------- | :--------- | :--------------------- | :-------------------------------------------------------------------------------------- |
+| `label`               | `string`   | `undefined`            | Determina el `label` del input de rango                                                 |
+| `minValuePlaceholder` | `string`   | `undefined`            | Especficia el `placeholder` del input de valor mínimo                                   |
+| `maxValuePlaceholder` | `string`   | `undefined`            | Especficia el `placeholder` del input de valor máximo                                   |
+| `onChange`            | `Function` | `(range: number[]) {}` | Recibe los valores mínimo y máximo en un `array` siendo el esquema general `[min, max]` |

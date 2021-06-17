@@ -1,0 +1,47 @@
+$font-primary: "Open Sans", sans-serif;
+
+$color-background-dark: rgba(68, 78, 84, 0.8);
+$color-background-light: rgba(213, 213, 213, 0.8);
+
+$color-text-dark: #ffffff;
+$color-text-light: #343434;
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+$a-tags: "a, a:active, a:hover, a:visited";
+$a-tags-hover: "a:active, a:hover";
+
+/*
+ * Implementation of themes
+ */
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+$themes: (
+    light: (
+        backgroundColor: $color-background-light,
+        textColor: $color-text-light,
+    ),
+    dark: (
+        backgroundColor: $color-background-dark,
+        textColor: $color-text-dark,
+    ),
+);

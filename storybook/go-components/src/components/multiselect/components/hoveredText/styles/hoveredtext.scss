@@ -1,0 +1,31 @@
+@import "./styles-utils.scss";
+
+.multiselector-tooltip {
+    display: flex;
+    position: absolute;
+    width: 95%;
+    bottom: 2rem;
+    text-align: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+    padding: 0.375rem;
+    @include themify($themes) {
+        background-color: themed("backgroundHoveredItemSelector");
+        color: themed("colorBase");
+    }
+    font-family: $font-primary;
+    font-size: 0.6875rem;
+    z-index: 1000;
+    .multiselector-tooltip-arrow {
+        position: absolute;
+        left: 45%;
+        bottom: -0.25rem;
+        width: 0rem;
+        height: 0rem;
+        border-left: 0.25rem solid transparent;
+        border-right: 0.25rem solid transparent;
+        @include themify($themes) {
+            border-top: 0.25rem solid themed("backgroundHoveredItemSelector");
+        }
+    }
+}

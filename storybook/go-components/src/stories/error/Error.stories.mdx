@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+import Error from "../../components/error";
+
+<Meta title="Error" component={Error} />
+
+export const Template = (args) => {
+    return <Error {...args} />;
+};
+
+# Error
+
+El `Error` es un componente de error estándar.
+
+<Story
+    name="Error"
+    argTypes={{
+        locale: {
+            control: {
+                type: "select",
+                options: ["es-ES", "ca-ES", "en-US", "en-GB"],
+            },
+        },
+        message: {
+            control: {
+                type: "text",
+            },
+        },
+    }}
+    args={{
+        locale: "en-GB",
+        message: "A custom message",
+    }}
+>
+    {Template.bind({})}
+</Story>
+
+Los diferentes `props` que puede recibir son los siguietnes.
+
+| **Prop**  | **Tipo** | **Valor por defecto** | **Descripción**                                          |
+| :-------- | :------- | :-------------------- | :------------------------------------------------------- |
+| `locale`  | `string` | `en-GB`               | Determina el idioma                                      |
+| `message` | `string` | `undefined`           | Determina el texto que saldrá debajo del estado de error |

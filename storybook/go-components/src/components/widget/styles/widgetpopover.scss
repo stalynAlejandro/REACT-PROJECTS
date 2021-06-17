@@ -1,0 +1,56 @@
+@import "../../../styles/styles-utils.scss";
+
+.widget-popver {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    z-index: 999;
+}
+
+.widget-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    top: 50px;
+    width: 90%;
+    height: 90%;
+    color: #ffffff;
+    @include themify($themes) {
+        color: themed("textColorBase");
+        background-color: themed("widgetHeaderColor");
+    }
+}
+
+.widget-header {
+    display: flex;
+    @include themify($themes) {
+        color: themed("textColorBase");
+        background-color: themed("legendHeader");
+    }
+    font-family: $font-primary;
+    user-select: none;
+    max-height: 3rem;
+    min-height: 2.1875rem;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 0.625rem;
+}
+
+.widget-icons {
+    display: flex;
+    width: auto;
+    cursor: pointer;
+}
+
+.widget-content {
+    @include themify($themes) {
+        background-color: themed("panelBackgroundColor");
+    }
+    width: 100%;
+    overflow: hidden;
+    flex: 1;
+}

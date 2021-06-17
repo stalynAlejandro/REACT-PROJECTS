@@ -1,0 +1,40 @@
+$color-text-black-base: #343434;
+$color-text-white-base: #ffffff;
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+$a-tags: "a, a:active, a:hover, a:visited";
+$a-tags-hover: "a:active, a:hover";
+
+/*
+ * Implementation of themes
+ */
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+$themes: (
+    light: (
+        textColorBase: $color-text-black-base,
+    ),
+    dark: (
+        textColorBase: $color-text-white-base,
+    ),
+);

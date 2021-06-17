@@ -1,0 +1,59 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+
+import Badge from "../../components/badge";
+import BellLigth from "./icons/bell-light";
+
+<Meta title="Badge" component={Badge} />
+
+export const Template = (args) => {
+    return <Badge {...args} />;
+};
+
+# Badge
+
+El `Badge` es un componente gráfico para indicar algún dato numérico con opción de icono.
+
+<Story
+    name="Badge"
+    argTypes={{
+        color: {
+            control: {
+                type: "select",
+                options: ["blue", "red"],
+            },
+        },
+        size: {
+            control: {
+                type: "select",
+                options: ["l", "m", "s"],
+            },
+        },
+        number: {
+            control: {
+                type: "number",
+            },
+        },
+        icon: {
+            control: {
+                type: "text",
+            },
+        },
+    }}
+    args={{
+        color: "red",
+        size: "m",
+        number: 8,
+        icon: <BellLigth />,
+    }}
+>
+    {Template.bind({})}
+</Story>
+
+The different `props` you can receive are as follows.
+
+| **Prop** | **Tipo**     | **Valor por defecto** | **Descripción**                                         |
+| :------- | :----------- | :-------------------- | :------------------------------------------------------ |
+| `color`  | `blue` `red` | `blue`                | Badge color                                             |
+| `size`   | `l` `m` `s`  | `m`                   | Badge size                                              |
+| `number` | `number`     | `undefined`           | Value that we want to be displayed inside the component |
+| `icon`   | `string `    | `undefined`           | Add an icon to the component                            |

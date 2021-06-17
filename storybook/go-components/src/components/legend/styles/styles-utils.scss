@@ -1,0 +1,62 @@
+$primary-font: "Open Sans";
+
+$color-text-label-dark: #b2b2b2;
+$color-text-label-light: #3a3a3a;
+
+$color-text-base-dark: #fff;
+$color-text-base-light: #343434;
+
+$color-panel-header-dark: #3F484D;
+$color-panel-header-light:#d5d5d5;
+
+$color-panel-item-dark: rgba(68,78,84,0.9);
+$color-panel-item-light:  rgba(204, 203, 203, 0.9);
+
+$color-panel-item-odd-dark: rgba(86,95,100,0.9);
+$color-panel-item-odd-light:rgba(213, 213, 213, 0.9);
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+$a-tags: "a, a:active, a:hover, a:visited";
+$a-tags-hover: "a:active, a:hover";
+
+/*
+ * Implementation of themes
+ */
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+$themes: (
+    light: (
+        LabelColor: $color-text-label-light,
+        TextBase: $color-text-base-light,
+        PanelHeader: $color-panel-header-light,
+        PanelItemEven: $color-panel-item-light,
+        PanelItemOdd: $color-panel-item-odd-light,
+    ),
+    dark: (
+        LabelColor: $color-text-label-dark,
+        TextBase: $color-text-base-dark,
+        PanelHeader: $color-panel-header-dark,
+        PanelItemEven: $color-panel-item-dark,
+        PanelItemOdd: $color-panel-item-odd-dark,
+    ),
+);

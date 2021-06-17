@@ -1,0 +1,61 @@
+@import "../../../styles/styles-utils.scss";
+
+.breadcrumb-item {
+    font-size: 1rem;
+    font-family: $font-primary;
+    font-weight: 500;
+    @include themify($themes) {
+        color: themed("textColorBase");
+    }
+    margin-right: 5px;
+    user-select: none;
+
+    .first-slash {
+        @include themify($themes) {
+            color: themed("breadCrumbSlashColor");
+        }
+    }
+
+    .first-gray-slash {
+        color: $color-text-white-darker-2;
+    }
+
+    .middle-slash {
+        @include themify($themes) {
+            color: themed("breadCrumbSlashColor");
+        }
+    }
+
+    .normal {
+        color: $color-text-white-darker-2;
+        text-decoration: none;
+    }
+
+    .normal:active,
+    .normal:visited,
+    .normal:hover {
+        color: $color-text-white-darker-2;
+    }
+
+    .default {
+        @include themify($themes) {
+            color: themed("textColorBase");
+        }
+        text-decoration: none;
+    }
+
+    .default:active,
+    .default:visited,
+    .default:hover {
+        @include themify($themes) {
+            color: themed("textColorBase");
+        }
+    }
+}
+
+.breadcrumb-item--active {
+    font-weight: 700;
+    @include themify($themes) {
+        color: themed("textColorBase");
+    }
+}

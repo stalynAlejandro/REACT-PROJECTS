@@ -1,0 +1,61 @@
+$color-background-dark: #373f44;
+$color-background-light: #f3f3f3;
+
+$color-light-no-items: #5C5C5C;
+$color-dark-no-items: #c6c6c6;
+
+$color-icon-black: #ffffff;
+$color-icon-white: #5C5C5C;
+
+$color-border-dark:  1px solid #292f30;
+$color-border-light: 1px solid #BBBBBB;
+
+$color-icon-color-dark: #444e54;
+$color-icon-color-light: #D5D5D5;
+
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+$a-tags: "a, a:active, a:hover, a:visited";
+$a-tags-hover: "a:active, a:hover";
+
+/*
+ * Implementation of themes
+ */
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+$themes: (
+    light: (
+        colorBase: $color-background-light,
+        itemColor: $color-icon-color-light,
+        noItemColor: $color-light-no-items,
+        iconColor: $color-icon-white,
+        borderColor: $color-border-light,
+    ),
+    dark: (
+        colorBase: $color-background-dark,
+        itemColor: $color-icon-color-dark,
+        noItemColor: $color-dark-no-items,
+        iconColor: $color-icon-black,
+        borderColor: $color-border-dark,
+    ),
+);

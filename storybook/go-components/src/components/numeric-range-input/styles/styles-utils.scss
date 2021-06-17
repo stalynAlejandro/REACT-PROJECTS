@@ -1,0 +1,74 @@
+$primary-font: "Open Sans";
+
+$color-font-dark-base: #ffffff;
+$color-font-light-base: #5c5c5c;
+
+$input-background-dark-color: #373f44;
+$input-background-light-color: #f3f3f3;
+
+$input-border-dark-color: #292f30;
+$input-border-light-color: #bbbbbb;
+
+$color-focused-input: #319acb;
+
+$color-text-white-darker-2: #b2b2b2;
+
+$color-text-disabled-light: #b4b4b4;
+
+$input-background-disabled-dark: #444e54;
+$input-background-disabled-light: #d5d5d5;
+
+$color-background-light-2: #d5d5d5;
+$color-background-dark-5: #31383c;
+
+$space-m: 0.5rem;
+$space-l: 0.75rem;
+$space-xl: 2.5rem;
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+$a-tags: "a, a:active, a:hover, a:visited";
+$a-tags-hover: "a:active, a:hover";
+
+/*
+ * Implementation of themes
+ */
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+$themes: (
+    light: (
+        textColorBase: $color-font-light-base,
+        inputBackground: $input-background-light-color,
+        inputBorder: $input-border-light-color,
+        backgroundDisabled: $input-background-disabled-light,
+        textColorDisabled: $color-text-disabled-light,
+        inputAlternativeBackground: $color-background-light-2,
+    ),
+    dark: (
+        textColorBase: $color-font-dark-base,
+        inputBackground: $input-background-dark-color,
+        inputBorder: $input-border-dark-color,
+        backgroundDisabled: $input-background-disabled-dark,
+        textColorDisabled: $color-text-white-darker-2,
+        inputAlternativeBackground: $color-background-dark-5,
+    ),
+);

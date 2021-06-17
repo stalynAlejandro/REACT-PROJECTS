@@ -1,0 +1,55 @@
+@import "./styles-utils.scss";
+
+.more-filters {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+
+    .more-filters-component {
+        display: flex;
+        align-items: center;
+
+        .more-filter-text {
+            display: flex;
+            flex-grow: 1;
+            height: 22px;
+            @include themify($themes) {
+                color: themed("TextColor");
+            }
+            font-family: $font-primary;
+            font-size: 16px;
+            margin-right: 8px;
+        }
+
+        .more-filter-icon {
+            margin-right: 8px;
+            svg {
+                width: 18px;
+                path {
+                    @include themify($themes) {
+                        fill: themed("IconColor");
+                    }
+                }
+            }
+        }
+    }
+
+    .more-filters-children {
+        position: absolute;
+        top: 250px;
+        width: 150px;
+        max-width: 300px;
+        height: auto;
+        background-color: transparent;
+    }
+}
+
+.more-filters-no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

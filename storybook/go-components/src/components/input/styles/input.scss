@@ -1,0 +1,99 @@
+@import "./styles-utils";
+
+.custom-input {
+    &__main-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 20px;
+
+        &.l {
+            font-size: 1rem;
+            width: 230px;
+        }
+
+        &.m {
+            font-size: 0.875rem;
+            width: 200px;
+        }
+
+        &.s {
+            font-size: 0.75rem;
+            width: 170px;
+        }
+    }
+
+    &__label {
+        margin-bottom: 8px;
+        font-family: $primary-font;
+
+        @include themify($themes) {
+            color: themed("textColorBase");
+        }
+
+        &.disabled {
+            @include themify($themes) {
+                color: themed("textColorDisabled");
+            }
+        }
+    }
+
+    &__main-input {
+        box-sizing: border-box;
+        height: 32px;
+        font-family: $primary-font;
+        border-radius: 2px;
+
+        @include themify($themes) {
+            border: 1px solid themed("inputBorder");
+        }
+
+        @include themify($themes) {
+            color: themed("textColorBase");
+        }
+
+        @include themify($themes) {
+            background-color: themed("inputBackground");
+        }
+
+        &::placeholder {
+            color: $color-text-white-darker-2;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0px 0px 1px 2px $color-focused-input;
+        }
+
+        &.l {
+            height: 40px !important;
+            padding: 8px 20px;
+            font-size: 1rem;
+        }
+
+        &.m {
+            padding: 8px 14px;
+            font-size: 0.875rem;
+        }
+
+        &.s {
+            padding: 8px 12px;
+            font-size: 0.75rem;
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+
+            @include themify($themes) {
+                background-color: themed("backgroundDisabled");
+                color: themed("textColorDisabled");
+            }
+        }
+
+        &.alternative {
+            @include themify($themes) {
+                background-color: themed("inputAlternativeBackground");
+            }
+        }
+    }
+}

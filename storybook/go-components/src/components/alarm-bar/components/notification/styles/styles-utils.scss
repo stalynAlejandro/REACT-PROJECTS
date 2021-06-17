@@ -1,0 +1,70 @@
+$font-primary: "Open Sans", sans-serif;
+
+$color-background-dark: #373f44;
+$color-background-light: #f3f3f3;
+
+$color-header-dark: #31383c;
+$color-header-light: #d5d5d5;
+
+$color-icon-color-light: #343434;
+$color-icon-color-dark: #ffffff;
+
+$color-title-dark: #ffffff;
+$color-title-light: #5c5c5c;
+
+$color-title-disabled-dark: #b2b2b2;
+$color-title-disabled-light: #838383;
+
+$color-icon-dark: #ffffff;
+$color-icon-light: #343434;
+
+$color-date-dark: #b2b2b2;
+$color-date-light: #838383;
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+$a-tags: "a, a:active, a:hover, a:visited";
+$a-tags-hover: "a:active, a:hover";
+
+/*
+ * Implementation of themes
+ */
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+$themes: (
+    light: (
+        backgroundColor: $color-background-light,
+        headerColor: $color-header-light,
+        titleColor: $color-title-light,
+        disabledColor: $color-icon-light,
+        iconColor: $color-icon-light,
+        dateColor: $color-date-light,
+    ),
+    dark: (
+        backgroundColor: $color-background-dark,
+        headerColor: $color-header-dark,
+        titleColor: $color-title-dark,
+        disabledColor: $color-icon-dark,
+        iconColor: $color-icon-dark,
+        dateColor: $color-date-dark,
+    ),
+);

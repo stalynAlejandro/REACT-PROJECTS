@@ -1,0 +1,294 @@
+@import "../../../styles/styles-utils.scss";
+
+.calendar__global-container {
+    .outside-click {
+        &__main-container {
+            width: fit-content;
+            position: absolute;
+            top: 100%;
+            margin-top: 4px;
+        }
+    }
+}
+
+.calendar {
+    &__global-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        font-size: inherit;
+    }
+
+    &__main-container {
+        position: relative;
+        border-radius: 0.25em;
+        padding: 0.75em;
+        padding-left: 1.25em;
+        padding-right: 1.25em;
+        font-family: $font-primary;
+        width: 16.25rem;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        user-select: none;
+        filter: drop-shadow(0em 0em 0.125em rgba(0, 0, 0, 0.4));
+        margin-top: 0.5rem;
+        z-index: 20;
+
+        @include themify($themes) {
+            background-color: themed("panelBackgroundColor2");
+        }
+
+        &:after {
+            content: " ";
+            position: absolute;
+            top: -0.4em;
+            width: 0;
+            height: 0;
+            border-left: 0.4em solid transparent;
+            border-right: 0.4em solid transparent;
+            border-bottom: 0.4em solid transparent;
+
+            @include themify($themes) {
+                border-bottom-color: themed("panelBackgroundColor2");
+            }
+        }
+    }
+
+    &__header-main-container {
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.875em;
+        padding: 0em 0.75em;
+    }
+
+    &__back-arrow {
+        margin-top: 0.25em;
+        cursor: pointer;
+        svg {
+            width: 0.75em;
+            transform: rotate(270deg);
+            @include themify($themes) {
+                color: themed("textColorWeakest");
+            }
+        }
+    }
+
+    &__forward-arrow {
+        margin-top: 0.25em;
+        cursor: pointer;
+        svg {
+            width: 0.75em;
+            transform: rotate(90deg);
+            @include themify($themes) {
+                color: themed("textColorWeakest");
+            }
+        }
+    }
+
+    &__month-name {
+        @include themify($themes) {
+            color: themed("calendarMonthNameColor");
+        }
+    }
+
+    &__weekday-container {
+        display: grid;
+        grid-template: auto / repeat(7, 1fr);
+        justify-items: center;
+        font-size: 0.75em;
+        margin: 1em 0em;
+        @include themify($themes) {
+            color: themed("textColorWeakest");
+        }
+    }
+
+    &__weekday {
+        width: 2em;
+        text-align: center;
+    }
+
+    &__month-container {
+        display: grid;
+        grid-template: auto / repeat(7, 1fr);
+        justify-items: center;
+        font-size: 0.875em;
+        @include themify($themes) {
+            color: themed("textColorBase");
+        }
+    }
+
+    &__single-day {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        cursor: pointer;
+        width: calc(16.25em / 7);
+        height: calc(16.25em / 7);
+        box-sizing: border-box;
+        text-align: center;
+        margin-bottom: 0.375em;
+
+        &.disabled-day {
+            cursor: not-allowed;
+            @include themify($themes) {
+                color: themed("textColorWeakest");
+            }
+        }
+    }
+
+    &__day-text {
+        z-index: 10;
+    }
+
+    &__active-path-day {
+        box-sizing: border-box;
+        width: calc(16.25em / 7);
+        height: calc(16.25em / 7);
+        background-color: $color-primary;
+        position: absolute;
+        border-radius: 3.125em;
+        z-index: 5;
+
+        &.current-path {
+            border: 0.125em solid $color-primary;
+        }
+    }
+
+    &__active-path-day ~ &__day-text {
+        color: $color-text-white-base;
+    }
+}
+
+.datepicker-simple-input {
+    &__main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 16.25rem;
+    }
+
+    &__label {
+        font-family: $font-primary;
+        margin-bottom: 0.5em;
+        @include themify($themes) {
+            color: themed("textColorBase");
+        }
+
+        &.l {
+            font-size: 1em;
+        }
+
+        &.m {
+            font-size: 0.875em;
+        }
+
+        &.s {
+            font-size: 0.75em;
+        }
+    }
+
+    &__input {
+        font-family: $font-primary;
+        border-radius: 0.125em;
+        cursor: pointer;
+        box-sizing: border-box;
+        width: 100%;
+
+        &.l {
+            font-size: 1em;
+            padding: 0.5em 1.25em;
+            height: 2.5em;
+        }
+
+        &.m {
+            font-size: 0.875em;
+            padding: 0.5em 0.875em;
+            height: 2.286em;
+        }
+
+        &.s {
+            font-size: 0.75em;
+            padding: 0.5em 0.75em;
+            height: 2.667em;
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+            @include themify($themes) {
+                color: themed("textColorWeakest");
+            }
+        }
+
+        @include themify($themes) {
+            border: 0.0625em solid themed("inputBorder");
+            color: themed("textColorBase");
+            background-color: themed("inputBackground");
+        }
+
+        &::placeholder {
+            color: $color-text-white-darker-2;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0em 0em 0.0625em 0.125em $color-primary;
+        }
+
+        &.alternative {
+            @include themify($themes) {
+                background-color: themed("datePickerAlternativeBackground");
+            }
+        }
+    }
+
+    &__group {
+        display: flex;
+        position: relative;
+        width: 100%;
+    }
+
+    &__icon {
+        cursor: pointer;
+        position: absolute;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        right: 0.75em;
+
+        @include themify($themes) {
+            color: themed("textColorBase");
+        }
+
+        &.l {
+            svg {
+                width: 1.375em;
+            }
+        }
+
+        &.m {
+            svg {
+                width: 1.0625em;
+            }
+        }
+
+        &.s {
+            svg {
+                width: 0.6875em;
+            }
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+            @include themify($themes) {
+                color: themed("textColorWeakest");
+            }
+        }
+    }
+}

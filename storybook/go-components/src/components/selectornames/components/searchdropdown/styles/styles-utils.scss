@@ -1,0 +1,62 @@
+$font-primary: "Open Sans", sans-serif;
+
+$color-dark-no-items: #c6c6c6;
+$color-light-no-items: #838383;
+
+$color-background-dark-2: #373f44;
+$color-background-light-2: #f3f3f3;
+
+$color-icon-black: #ffffff;
+$color-icon-white: #838383;
+
+$color-border-dark: 1px solid #292f30;
+$color-border-light: 1px solid #bbbbbb;
+
+$color-text-base-dark: #fff;
+$color-text-base-light: #5c5c5c;
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+$a-tags: "a, a:active, a:hover, a:visited";
+$a-tags-hover: "a:active, a:hover";
+
+/*
+ * Implementation of themes
+ */
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+$themes: (
+    light: (
+        textBase: $color-text-base-light,
+        colorSearchInput: $color-light-no-items,
+        panelBackgroundColor: $color-background-light-2,
+        iconColor: $color-icon-white,
+        borderColor: $color-border-light,
+    ),
+    dark: (
+        textBase: $color-text-base-dark,
+        colorSearchInput: $color-dark-no-items,
+        panelBackgroundColor: $color-background-dark-2,
+        iconColor: $color-icon-black,
+        borderColor: $color-border-dark,
+    ),
+);

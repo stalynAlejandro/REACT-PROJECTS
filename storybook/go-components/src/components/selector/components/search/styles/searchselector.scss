@@ -1,0 +1,56 @@
+@import "../../../styles/styles-utils.scss";
+
+.search-select {
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .search-select-input {
+        display: flex;
+        box-sizing: border-box;
+        height: 32px;
+        width: 100%;
+        @include themify($themes) {
+            border: themed("borderColor");
+            background-color: themed("backgroundColor");
+        }
+        color: #c6c6c6;
+        border-radius: 2px;
+        font-family: $font-primary;
+        font-size: 0.875rem;
+        letter-spacing: 0;
+        line-height: 19px;
+        padding-left: 10px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .search-select-icon {
+        position: absolute;
+        top: 9.5px;
+        right: 16px;
+        svg {
+            width: 15px;
+            height: 15px;
+
+            path {
+                @include themify($themes) {
+                    fill: themed("iconColor");
+                }
+            }
+        }
+    }
+}
+
+.search-select-no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

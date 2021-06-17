@@ -1,0 +1,173 @@
+@import "../../../styles/styles-utils.scss";
+
+.basic-chart {
+    &__main-container {
+        font-family: $font-primary;
+        font-size: 0.875rem;
+
+        .highcharts-title {
+            display: none;
+        }
+
+        .highcharts-tooltip {
+            display: none;
+        }
+
+        .highcharts-xaxis-grid {
+            .highcharts-grid-line {
+                stroke: none;
+            }
+        }
+
+        .highcharts-yaxis-grid {
+            .highcharts-grid-line {
+                @include themify($themes) {
+                    stroke: themed("chartGridColor");
+                }
+            }
+        }
+
+        .highcharts-xaxis {
+            .highcharts-axis-line,
+            .highcharts-tick {
+                @include themify($themes) {
+                    stroke: themed("chartLegendColor");
+                }
+            }
+        }
+
+        .highcharts-yaxis,
+        .highcharts-xaxis-labels,
+        .highcharts-yaxis-labels {
+            text {
+                @include themify($themes) {
+                    fill: themed("chartLegendColor") !important;
+                }
+            }
+        }
+        .basic-chart__x-axis-current {
+            padding-left: 4.4rem;
+        }
+
+        .highcharts-scrollbar-thumb {
+            fill: $chart-scrollbar-thumb-color;
+            stroke: none;
+        }
+
+        .highcharts-scrollbar-track {
+            fill: $chart-scrollbar-track-color;
+            stroke: none;
+        }
+
+        .highcharts-scrollbar-rifles {
+            stroke: $color-background-search-light;
+        }
+
+        .highcharts-scrollbar-button {
+            fill: transparent;
+            stroke: none;
+        }
+
+        .highcharts-scrollbar-arrow {
+            fill: $color-background-search-light;
+        }
+
+        .highcharts-exporting-group {
+            display: none;
+        }
+
+        .highcharts-scrollbar-rifles {
+            display: none;
+        }
+
+        .highcharts-scrollbar-track,
+        .highcharts-scrollbar-thumb,
+        .highcharts-scrollbar-button,
+        .highcharts-scrollbar-arrow {
+            transform: translateY(-0.625rem);
+        }
+    }
+
+    &__legend-container {
+        display: grid;
+        grid-template-rows: 1.875rem;
+        grid-auto-rows: 1.875rem;
+        grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+
+        margin-top: 0.75rem;
+    }
+
+    &__legend-single-item {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 0.75rem;
+        padding-left: 4.4rem;
+
+        &.active {
+            opacity: 1;
+        }
+
+        &.unnactive {
+            opacity: 0.5;
+        }
+
+        @include themify($themes) {
+            color: themed("chartLegendTextColor");
+        }
+    }
+
+    &__legend-symbol {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 3.125rem;
+        margin-right: 0.5rem;
+    }
+
+    &__legend-name {
+        font-weight: bold;
+        @include themify($themes) {
+            color: themed("chartLegendTitleColor");
+        }
+    }
+
+    &__legend-value {
+        margin-left: 0.5rem;
+    }
+
+    &__x-axis-current {
+        display: flex;
+        align-items: center;
+        padding-left: 2.5rem;
+        margin-top: 0.75rem;
+        font-size: 0.75rem;
+
+        @include themify($themes) {
+            color: themed("chartLegendTextColor");
+        }
+    }
+
+    &__x-axis-current-container {
+        display: flex;
+        @include themify($themes) {
+            color: themed("chartLegendTextColor");
+        }
+    }
+
+    &__x-axis-current-label {
+        margin-right: 0.5rem;
+        font-weight: bold;
+        @include themify($themes) {
+            color: themed("chartLegendTitleColor");
+        }
+    }
+
+    &__x-axis-current-label-time {
+        margin-left: 0.75rem;
+        margin-right: 0.5rem;
+        font-weight: bold;
+        @include themify($themes) {
+            color: themed("chartLegendTitleColor");
+        }
+    }
+}

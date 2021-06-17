@@ -1,0 +1,42 @@
+@import "./styles-utils.scss";
+
+.bottom-drop-down {
+    .multiselect-bottom-buttons {
+        display: flex;
+        max-width: 20rem;
+        height: 1.25rem;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.625rem;
+    }
+
+    .multiselect-select-all {
+        cursor: pointer;
+        height: 1.1875rem;
+        width: 8.125rem;
+        text-align: left;
+        @include themify($themes) {
+            color: themed("colorSelect");
+        }
+        font-family: $font-primary;
+        font-size: 0.875rem;
+        letter-spacing: 0;
+        line-height: 1.1875rem;
+        margin-left: 1rem;
+    }
+
+    .multiselect-clear {
+        cursor: pointer;
+        height: 1.1875rem;
+        width: 6.25rem;
+        text-align: right;
+        @include themify($themes) {
+            color: themed("colorClear");
+        }
+        font-family: $font-primary;
+        font-size: 0.875rem;
+        letter-spacing: 0;
+        line-height: 1.1875rem;
+        margin-right: 1rem;
+    }
+}

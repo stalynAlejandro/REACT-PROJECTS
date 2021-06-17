@@ -1,0 +1,52 @@
+$font-primary: "Open Sans", sans-serif;
+
+$color-background-dark: #444e54;
+$color-background-light: #f3f3f3;
+
+$color-header-color-dark: rgba(41, 47, 50, 0.2);
+$color-header-color-light: #c5c4c4;
+
+$color-cross-icon-dark: rgba(255, 255, 255, 0.5);
+$color-cross-icon-light: #000000;
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+$a-tags: "a, a:active, a:hover, a:visited";
+$a-tags-hover: "a:active, a:hover";
+
+/*
+ * Implementation of themes
+ */
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+$themes: (
+    light: (
+        backgroundColor: $color-background-light,
+        headerColor: $color-header-color-light,
+        iconColor: $color-cross-icon-light,
+    ),
+    dark: (
+        backgroundColor: $color-background-dark,
+        headerColor: $color-header-color-dark,
+        iconColor: $color-cross-icon-dark,
+    ),
+);

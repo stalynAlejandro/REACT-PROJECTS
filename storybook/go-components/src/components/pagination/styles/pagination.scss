@@ -1,0 +1,149 @@
+@import "./styles-utils.scss";
+
+.table__pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+
+    .table__pageButton {
+        cursor: pointer;
+        margin-right: 0;
+        border-radius: 0;
+        border: 1px solid $color-button-background;
+        background-color: transparent;
+        font-family: $primary-font;
+        padding: 2px 6px;
+
+        @include themify($themes) {
+            color: themed("textColorBase");
+        }
+
+        &--active {
+            color: $color-font-dark-base !important;
+            background-color: $color-primary;
+            border: none;
+        }
+
+        &:not(.table__pageButton--active):hover {
+            @include themify($themes) {
+                background-color: themed("textBackgroundHover");
+            }
+        }
+
+        &:active {
+            box-shadow: 0 0 1px 2px #319acb;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            background-color: $color-button-hover;
+            color: $color-font-dark-base;
+            border: none;
+        }
+
+        &.disabled {
+            cursor: not-allowed !important;
+            border: 1px solid $color-button-background;
+            background-color: transparent;
+
+            &:hover {
+                color: $color-font-dark-base !important;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        &.l {
+            height: 40px;
+            min-width: 40px;
+            font-size: 1rem;
+        }
+
+        &.m {
+            height: 32px;
+            min-width: 32px;
+            font-size: 0.875rem;
+        }
+
+        &.s {
+            height: 24px;
+            min-width: 24px;
+            font-size: 0.75rem;
+        }
+    }
+
+    .table__prevPageWrapper {
+        .table__pageButton {
+            border-radius: 4px 0 0 4px;
+            background-color: $color-button-background;
+            color: $color-button-text-color;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $color-font-dark-base;
+            }
+
+            &.l {
+                height: 40px;
+                font-size: 1rem;
+                width: 90px;
+            }
+
+            &.m {
+                height: 32px;
+                font-size: 0.875rem;
+                width: 84px;
+            }
+
+            &.s {
+                height: 24px;
+                font-size: 0.75rem;
+                width: 66px;
+            }
+
+            &.disabled {
+                color: $color-button-text-color !important;
+            }
+        }
+    }
+
+    .table__nextPageWrapper {
+        .table__pageButton {
+            border-radius: 0 4px 4px 0;
+            background-color: $color-button-background;
+            color: $color-button-text-color;
+            cursor: pointer;
+            &:hover {
+                background-color: $color-font-dark-base;
+                color: $color-button-text-color;
+            }
+
+            &.l {
+                height: 40px;
+                font-size: 1rem;
+                width: 90px;
+            }
+
+            &.m {
+                height: 32px;
+                font-size: 0.875rem;
+                width: 84px;
+            }
+
+            &.s {
+                height: 24px;
+                font-size: 0.75rem;
+                width: 66px;
+            }
+
+            &.disabled {
+                color: $color-button-text-color !important;
+            }
+        }
+    }
+}

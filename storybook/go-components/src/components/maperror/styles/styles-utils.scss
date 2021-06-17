@@ -1,0 +1,57 @@
+$font-primary: "Open Sans", sans-serif;
+
+$color-text-base-dark: #fff;
+$color-text-base-light: #343434;
+
+$color-panel-header-dark: #3f484d;
+$color-panel-header-light: #d5d5d5;
+
+$color-panel-body-dark: #4b575e;
+$color-panel-body-light: #f3f3f3;
+
+$color-icon-dark: #d5d5d5;
+$color-icon-light: #444e54;
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+$a-tags: "a, a:active, a:hover, a:visited";
+$a-tags-hover: "a:active, a:hover";
+
+/*
+ * Implementation of themes
+ */
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+$themes: (
+    light: (
+        PanelHeader: $color-panel-header-light,
+        TextBase: $color-text-base-light,
+        IconColor: $color-icon-light,
+        PanelBody: $color-panel-body-light,
+    ),
+    dark: (
+        PanelHeader: $color-panel-header-dark,
+        TextBase: $color-text-base-dark,
+        IconColor: $color-icon-dark,
+        PanelBody: $color-panel-body-dark,
+    ),
+);
