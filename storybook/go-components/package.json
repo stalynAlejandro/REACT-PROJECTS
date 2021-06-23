@@ -24,28 +24,12 @@
         "clean": "rimraf dist/",
         "build-storybook": "build-storybook -c .storybook -o public",
         "compile": "npm run clean && tsdx build",
-        "npmupload:patch": "npm version patch && npm run compile && npm publish --registry https://nexus.dev.idrica.pro/repository/npm-hosted/",
-        "npmupload:minor": "npm version minor && npm run compile && npm publish --registry https://nexus.dev.idrica.pro/repository/npm-hosted/",
-        "npmupload:major": "npm version major && npm run compile && npm publish --registry https://nexus.dev.idrica.pro/repository/npm-hosted/"
+        "npmupload:patch": "npm version patch && npm run compile",
+        "npmupload:minor": "npm version minor && npm run compile",
+        "npmupload:major": "npm version major && npm run compile"
     },
     "peerDependencies": {
         "react": ">=16"
-    },
-    "publishConfig": {
-        "registry": "https://nexus.dev.idrica.pro/repository/npm-hosted"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "tsdx lint -- --fix"
-        }
-    },
-    "prettier": {
-        "printWidth": 80,
-        "semi": true,
-        "singleQuote": false,
-        "tabWidth": 2,
-        "endOfLine": "auto",
-        "trailingComma": "es5"
     },
     "size-limit": [
         {
