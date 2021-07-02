@@ -1,0 +1,1 @@
+export { SearchedScreen } from './SearchedScreen'

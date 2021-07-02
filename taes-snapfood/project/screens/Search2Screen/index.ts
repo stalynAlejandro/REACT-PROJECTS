@@ -1,0 +1,1 @@
+export { Search2Screen } from './Search2Screen'
