@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
+import { Form } from "./components/Form";
+import { List } from "./components/List";
+import { Sub } from "./types";
 
-interface ISub {
-  nick: string;
-  avatar: string;
-  subMonths: number;
-  description?: string;
+interface IAppState {
+  subs: Sub[];
+  newSubs: number;
 }
 
 const initialState = [
@@ -23,29 +24,24 @@ const initialState = [
 ];
 
 function App() {
-  const [subs, setSubs] = useState<ISub[]>([]);
+  const [subs, setSubs] = useState<IAppState["subs"]>([]);
+  const [newSubs, setNewSubs] = useState<IAppState["newSubs"]>(0);
+  const divRef = useRef<HTMLDivElement>(null); // Es un hook donde puedes guardar un valor, se va a quedar guardado entre renderizados, pero no va a causar un renderizado
 
   useEffect(() => {
     setSubs(initialState);
     return () => {};
   }, []);
 
+  const handleNewSub = (newSub: Sub): void => {
+    setSubs((subs) => [...subs, newSub]);
+  };
+
   return (
-    <div className="App">
+    <div className="App" ref={divRef}>
       <h1>subs</h1>
-      <ul>
-        {subs.map((sub) => {
-          return (
-            <li key={sub.nick}>
-              <img src={sub.avatar} alt={`Avatar for ${sub.nick}`} />
-              <h4>
-                {sub.nick} <small> {sub.subMonths} </small>{" "}
-              </h4>
-              <p>{sub.description?.substring(0, 100)}</p>
-            </li>
-          );
-        })}
-      </ul>
+      <List subs={subs} />
+      <Form onNewSub={handleNewSub} />
     </div>
   );
 }
