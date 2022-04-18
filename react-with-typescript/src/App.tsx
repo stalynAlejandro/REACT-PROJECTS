@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Form } from "./components/Form";
@@ -16,9 +17,9 @@ function App() {
 
   useEffect(() => {
     const fetchSubs = (): Promise<SubsResponseFromApi> => {
-      return fetch("http://localhost:3001/subs").then(
-        (res) => res.json
-      ) as Promise<SubsResponseFromApi>;
+      return axios
+        .get<SubsResponseFromApi>("http://localhost:3001/subs")
+        .then((response) => response.data);
     };
 
     const mapFromApi = (apiResponse: SubsResponseFromApi): Array<Sub> => {
