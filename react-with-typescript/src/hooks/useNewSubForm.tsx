@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useCallback, useReducer } from "react";
 import { Sub } from "../types";
 
 interface FormState {
@@ -42,7 +42,23 @@ const formReducer = (
 };
 
 const useNewSubForm = () => {
-  return useReducer(formReducer, initialState);
+  const [inputValues, dispatch] = useReducer(formReducer, initialState);
+  const clearForm = useCallback(() => dispatch({ type: "clear" }), []);
+
+  const changeValue = useCallback(
+    (name: string, value: string) =>
+      dispatch({
+        type: "change_value",
+        payload: { inputName: name, inputValue: value },
+      }),
+    []
+  );
+
+  return {
+    formState: inputValues,
+    clearForm,
+    changeValue,
+  };
 };
 
 export default useNewSubForm;
