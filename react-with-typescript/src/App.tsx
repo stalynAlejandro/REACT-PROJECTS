@@ -2,26 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Form } from "./components/Form";
 import { List } from "./components/List";
-import { Sub } from "./types";
+import { Sub, SubsResponseFromApi } from "./types";
 
 interface IAppState {
   subs: Sub[];
   newSubs: number;
 }
-
-const initialState = [
-  {
-    nick: "dapelu",
-    subMonths: 5,
-    avatar: "https://i.pravatar.cc/150?u=dapelu",
-    description: "aveces hace de moderador",
-  },
-  {
-    nick: "sergio",
-    subMonths: 4,
-    avatar: "https://i.pravatar.cc/150?u=sergio",
-  },
-];
 
 function App() {
   const [subs, setSubs] = useState<IAppState["subs"]>([]);
@@ -29,18 +15,36 @@ function App() {
   const divRef = useRef<HTMLDivElement>(null); // Es un hook donde puedes guardar un valor, se va a quedar guardado entre renderizados, pero no va a causar un renderizado
 
   useEffect(() => {
-    setSubs(initialState);
-    return () => {};
+    const fetchSubs = (): Promise<SubsResponseFromApi> => {
+      return fetch("http://localhost:3001/subs").then(
+        (res) => res.json
+      ) as Promise<SubsResponseFromApi>;
+    };
+
+    const mapFromApi = (apiResponse: SubsResponseFromApi): Array<Sub> => {
+      return apiResponse.map((subFromApi) => {
+        return {
+          nick: subFromApi.nick,
+          avatar: subFromApi.profileUrl,
+          subMonths: subFromApi.months,
+          description: subFromApi.description,
+        };
+      });
+    };
+
+    fetchSubs().then(mapFromApi).then(setSubs);
   }, []);
 
   const handleNewSub = (newSub: Sub): void => {
     setSubs((subs) => [...subs, newSub]);
+    setNewSubs((n) => n + 1);
   };
 
   return (
     <div className="App" ref={divRef}>
       <h1>subs</h1>
       <List subs={subs} />
+      New subs: {newSubs}
       <Form onNewSub={handleNewSub} />
     </div>
   );

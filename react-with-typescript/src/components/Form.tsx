@@ -62,7 +62,10 @@ export const Form = ({ onNewSub }: FormProps) => {
           name="description"
           placeholder="description"
         />
-        <button>Save new sub!</button>
+        <button onClick={handleClear} type="button">
+          Clear the form
+        </button>
+        <button type="submit">Save new sub!</button>
       </form>
     </div>
   );
