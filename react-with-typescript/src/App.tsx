@@ -1,6 +1,6 @@
+import "./App.css";
 import React, { useState } from "react";
 import { Subs, Gifs } from "./containers";
-import "./App.css";
 
 enum PET_APPS {
   Subs = "subs",
