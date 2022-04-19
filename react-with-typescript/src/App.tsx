@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./App.css";
 import { Form } from "./components/Form";
 import { List } from "./components/List";
 import { Sub } from "./types";
 import { getAllSubs } from "./services/getAllSubs";
+import "./App.css";
 
 interface IAppState {
   subs: Sub[];
