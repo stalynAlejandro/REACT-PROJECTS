@@ -1,35 +1,29 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Form } from "./components/Form";
-import { List } from "./components/List";
-import { Sub } from "./types";
-import { getAllSubs } from "./services/getAllSubs";
+import React, { useState } from "react";
+import { Subs, Gifs } from "./containers";
 import "./App.css";
 
-interface IAppState {
-  subs: Sub[];
-  newSubs: number;
+enum PET_APPS {
+  Subs = "subs",
+  Gifs = "gifs",
 }
 
 function App() {
-  const [subs, setSubs] = useState<IAppState["subs"]>([]);
-  const [newSubs, setNewSubs] = useState<IAppState["newSubs"]>(0);
-  const divRef = useRef<HTMLDivElement>(null); // Es un hook donde puedes guardar un valor, se va a quedar guardado entre renderizados, pero no va a causar un renderizado
+  const [currentApp, setCurrentApp] = useState(PET_APPS.Subs);
 
-  useEffect(() => {
-    getAllSubs().then(setSubs);
-  }, []);
-
-  const handleNewSub = (newSub: Sub): void => {
-    setSubs((subs) => [...subs, newSub]);
-    setNewSubs((n) => n + 1);
+  const handleChangeApp = (targetApp: PET_APPS) => {
+    setCurrentApp(targetApp);
   };
 
   return (
-    <div className="App" ref={divRef}>
-      <h1>subs</h1>
-      <List subs={subs} />
-      New subs: {newSubs}
-      <Form onNewSub={handleNewSub} />
+    <div className="App">
+      <div>
+        <strong>Chosse app</strong>
+        <button onClick={() => handleChangeApp(PET_APPS.Subs)}>Subs</button>
+        <button onClick={() => handleChangeApp(PET_APPS.Gifs)}>Gifs</button>
+      </div>
+
+      {currentApp === PET_APPS.Subs && <Subs />}
+      {currentApp === PET_APPS.Gifs && <Gifs />}
     </div>
   );
 }

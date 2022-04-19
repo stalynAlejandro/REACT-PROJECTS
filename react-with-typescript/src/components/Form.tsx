@@ -36,6 +36,7 @@ export const Form = ({ onNewSub }: FormProps) => {
           name="nick"
           placeholder="nick"
         />
+
         <input
           onChange={handleChange}
           value={formState.subMonths}
@@ -43,6 +44,7 @@ export const Form = ({ onNewSub }: FormProps) => {
           name="subMonths"
           placeholder="subMonths"
         />
+
         <input
           onChange={handleChange}
           value={formState.avatar}
@@ -50,12 +52,14 @@ export const Form = ({ onNewSub }: FormProps) => {
           name="avatar"
           placeholder="avatar"
         />
+
         <textarea
           onChange={handleChange}
           value={formState.description}
           name="description"
           placeholder="description"
         />
+
         <button onClick={handleClear} type="button">
           Clear the form
         </button>
