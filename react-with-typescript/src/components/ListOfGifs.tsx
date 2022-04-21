@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ImageGifResponseFromApi } from "../types";
 import { getGifs } from "../services/getGifs";
+import { RouteComponentProps } from "wouter";
 
-export const ListOfGifs = ({ keyword }: { keyword: string }) => {
+interface Props extends RouteComponentProps<{ keyword: string }> {}
+
+export const ListOfGifs = (props: Props) => {
+  const { keyword } = props.params;
   const [gifs, setGifs] = useState<ImageGifResponseFromApi[]>([]);
 
   useEffect(() => {
@@ -18,6 +22,8 @@ export const ListOfGifs = ({ keyword }: { keyword: string }) => {
           <img
             key={index}
             src={gif.url}
+            width={100}
+            height={100}
             alt={`img-${gif.url.substring(0, 6)}`}
           />
         </a>
