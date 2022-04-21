@@ -42,9 +42,11 @@ const formReducer = (
 };
 
 const useNewSubForm = () => {
+  // Data
   const [inputValues, dispatch] = useReducer(formReducer, initialState);
-  const clearForm = useCallback(() => dispatch({ type: "clear" }), []);
 
+  // Functions
+  const clearForm = useCallback(() => dispatch({ type: "clear" }), []);
   const changeValue = useCallback(
     (name: string, value: string) =>
       dispatch({
