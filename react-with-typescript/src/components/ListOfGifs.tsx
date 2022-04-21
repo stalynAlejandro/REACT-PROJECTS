@@ -7,16 +7,20 @@ interface Props extends RouteComponentProps<{ keyword: string }> {}
 
 export const ListOfGifs = (props: Props) => {
   const { keyword } = props.params;
+  const [loading, setLoading] = useState<boolean>(false);
   const [gifs, setGifs] = useState<ImageGifResponseFromApi[]>([]);
 
   useEffect(() => {
-    getGifs({ keyword: keyword }).then((gifs: ImageGifResponseFromApi[]) =>
-      setGifs(gifs)
-    );
+    setLoading(true);
+    getGifs({ keyword: keyword }).then((gifs: ImageGifResponseFromApi[]) => {
+      setGifs(gifs);
+      setLoading(false);
+    });
   }, [keyword]);
 
   return (
     <React.Fragment>
+      {loading && <i>Loading ...</i>}
       {gifs.map((gif, index) => (
         <a href={`#${index}`}>
           <img
