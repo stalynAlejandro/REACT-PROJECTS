@@ -18,3 +18,22 @@ export type SubsResponseFromApi = Array<{
   profileUrl: string;
   description: string;
 }>;
+
+// Gifs Api
+export type ImageGifResponseFromApi = {
+  height: string;
+  width: string;
+  size: string;
+  url: string;
+};
+
+export type GifsResponseFromApi = {
+  data: Array<{
+    type: string;
+    title: string;
+    images: {
+      original: ImageGifResponseFromApi;
+      downsized_medium: ImageGifResponseFromApi;
+    };
+  }>;
+};

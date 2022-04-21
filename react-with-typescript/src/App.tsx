@@ -1,6 +1,6 @@
-import "./App.css";
 import React, { useState } from "react";
 import { Subs, Gifs } from "./containers";
+import "./App.css";
 
 enum PET_APPS {
   Subs = "subs",
@@ -8,7 +8,7 @@ enum PET_APPS {
 }
 
 function App() {
-  const [currentApp, setCurrentApp] = useState(PET_APPS.Subs);
+  const [currentApp, setCurrentApp] = useState(PET_APPS.Gifs);
 
   const handleChangeApp = (targetApp: PET_APPS) => {
     setCurrentApp(targetApp);

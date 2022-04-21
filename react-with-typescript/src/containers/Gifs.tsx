@@ -1,18 +1,15 @@
-import React from "react";
-import { Link } from "wouter";
+import React, { useState } from "react";
+import { ListOfGifs } from "../components/ListOfGifs";
+import "./Gifs.css";
+// Hooks -> funcionalidad para los componentes
 
 export function Gifs() {
+  const [keyword, setKeyword] = useState<string>("ecuador");
+
   return (
-    <div className="Gifs">
-      <section className="Gifs-content">
-        <Link to="/">
-          <img
-            className="App-logo"
-            alt="Giffy Logo"
-            src=" https://lh3.googleusercontent.com/a-/AOh14GgYVR-YAHPnQKkwqihq3pVjdiflmPZk6gt7YdZ2vg"
-          />
-        </Link>
-      </section>
+    <div className="Gif">
+      <button onClick={() => setKeyword("panda")}>Cambiar Keyword</button>
+      <ListOfGifs keyword={keyword} />
     </div>
   );
 }
