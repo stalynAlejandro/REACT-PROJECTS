@@ -1,0 +1,5 @@
+.LisfOfGifs {
+  /* column-count: var(--results-columns); */
+  column-count: 5;
+  column-gap: 0.5em;
+}

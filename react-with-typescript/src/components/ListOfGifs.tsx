@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ImageGifResponseFromApi } from "../types";
-import { getGifs } from "../services/getGifs";
-import { RouteComponentProps } from "wouter";
+import "./ListOfGifs.css";
 
-interface Props extends RouteComponentProps<{ keyword: string }> {}
-
-export const ListOfGifs = (props: Props) => {
-  const { keyword } = props.params;
-  const [loading, setLoading] = useState<boolean>(false);
-  const [gifs, setGifs] = useState<ImageGifResponseFromApi[]>([]);
-
-  useEffect(() => {
-    setLoading(true);
-    getGifs({ keyword: keyword }).then((gifs: ImageGifResponseFromApi[]) => {
-      setGifs(gifs);
-      setLoading(false);
-    });
-  }, [keyword]);
-
+export const ListOfGifs = ({ gifs }: { gifs: ImageGifResponseFromApi[] }) => {
   return (
-    <React.Fragment>
-      {loading && <i>Loading ...</i>}
+    <div className="ListOfGifs">
       {gifs.map((gif, index) => (
         <a href={`#${index}`}>
           <img
@@ -32,6 +16,6 @@ export const ListOfGifs = (props: Props) => {
           />
         </a>
       ))}
-    </React.Fragment>
+    </div>
   );
 };

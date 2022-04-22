@@ -1,19 +1,45 @@
-import React from "react";
-import { Link, Route } from "wouter";
+import React, { useState } from "react";
+import { Link, Route, useLocation } from "wouter";
 import App from "../App";
+import { SearchResults } from "../components";
 import { ListOfGifs } from "../components/ListOfGifs";
 import "./Gifs.css";
 // Hooks -> funcionalidad para los componentes
 
+const POPULAR_GIFS = ["Matrix", "Venezuela", "Chile", "Colombia", "Ecuador"];
+
 export function Gifs() {
-  console.log("Gifs");
+  const [keyword, setKeyword] = useState<string>("");
+  const [path, pushLocation] = useLocation();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    pushLocation(`/gif/${keyword}`);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setKeyword(e.target.value);
+  };
+
   return (
-    <div className="Gif">
-      <Link href="/gif/panda">Gif Panda</Link>
-      <Link href="/gif/ecuador">Gif Ecuador</Link>
-      <Link href="/gif/rick">Gif Rick</Link>
-      <Route component={App} path="/" />
-      <Route component={ListOfGifs} path="/gif/:keyword" />
-    </div>
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Search a gif here ..."
+          onChange={handleChange}
+          type="text"
+          value={keyword}
+        />
+        <input type="submit" value="Buscar" />
+      </form>
+      <div className="Gif">
+        {POPULAR_GIFS.map((popularGif) => (
+          <Link to={`/gif/${popularGif}`}>Gifs {popularGif}</Link>
+        ))}
+        <Route component={App} path="/" />
+        <Route component={SearchResults} path="/gif/:keyword" />
+      </div>
+    </>
   );
 }
