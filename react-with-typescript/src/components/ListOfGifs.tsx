@@ -6,7 +6,7 @@ export const ListOfGifs = ({ gifs }: { gifs: ImageGifResponseFromApi[] }) => {
   return (
     <div className="ListOfGifs">
       {gifs.map((gif, index) => (
-        <a href={`#${index}`}>
+        <a key={index} href={`#${index}`}>
           <img
             key={index}
             src={gif.url}

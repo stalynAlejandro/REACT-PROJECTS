@@ -15,9 +15,7 @@ import "./Gifs.css";
 export const Counter = () => {
   const [counter, setCounter] = useState<number>(0);
 
-  useEffect(() => {
-    console.log("fetch()");
-  }, [counter]);
+  useEffect(() => {}, [counter]);
 
   const increment = useCallback(() => {
     setCounter((count) => count + 1);
