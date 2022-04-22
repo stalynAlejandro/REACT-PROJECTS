@@ -21,14 +21,16 @@ export type SubsResponseFromApi = Array<{
 
 // Gifs Api
 export type ImageGifResponseFromApi = {
-  height: string;
-  width: string;
-  size: string;
+  id: string;
   url: string;
+  size: string;
+  width: string;
+  height: string;
 };
 
 export type GifsResponseFromApi = {
   data: Array<{
+    id: string;
     type: string;
     title: string;
     images: {

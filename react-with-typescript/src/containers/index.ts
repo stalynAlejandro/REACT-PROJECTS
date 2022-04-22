@@ -1,3 +1,4 @@
 import { Gifs } from "./Gifs";
 import { Subs } from "./Subs";
-export { Gifs, Subs };
+import { Counter } from "./Counter";
+export { Gifs, Subs, Counter };

@@ -14,7 +14,9 @@ export const getGifs = ({
     .then((response) => {
       const { data = [] }: GifsResponseFromApi = response;
       const gifs = data.map((gif) => {
+        console.log(gif);
         return {
+          id: gif.id,
           url: gif.images.downsized_medium.url,
           size: gif.images.downsized_medium.size,
           width: gif.images.downsized_medium.width,
