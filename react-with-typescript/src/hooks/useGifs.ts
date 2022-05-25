@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { ImageGifResponseFromApi } from "../types";
 import { getGifs } from "../services/getGifs";
 
-export default function useGifs({ keyword }: { keyword?: string }) {
+export function useGifs({ keyword }: { keyword?: string }) {
   const [gifs, setGifs] = useState<ImageGifResponseFromApi[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  console.log("useGifs : ", keyword);
+  const [loadingGifs, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -22,7 +20,7 @@ export default function useGifs({ keyword }: { keyword?: string }) {
   }, [keyword]);
 
   return {
-    loading,
+    loadingGifs,
     gifs,
   };
 }

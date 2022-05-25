@@ -1,18 +1,22 @@
 import React, { useState } from "react";
-import { Link, Route, useLocation } from "wouter";
 import App from "../App";
+import { Link, Route, useLocation } from "wouter";
+import { useGifs } from "../hooks/useGifs";
 import { SearchResults } from "../components";
+import { Loading } from "../components/Loading";
 import { ListOfGifs } from "../components/ListOfGifs";
-import useGifs from "../hooks/useGifs";
+import { StaticContext } from "../context/StaticContext";
+import { GifContextProvider } from "../context/GifsContext";
+import { Detail } from "./Detail";
+
 import "./Gifs.css";
-// Hooks -> funcionalidad para los componentes
 
 const POPULAR_GIFS = ["Matrix", "Venezuela", "Chile", "Colombia", "Ecuador"];
 
 export function Gifs() {
   const [keyword, setKeyword] = useState<string>("");
   const [path, pushLocation] = useLocation();
-  const { loading, gifs } = useGifs({});
+  const { loadingGifs, gifs } = useGifs({});
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,7 +29,7 @@ export function Gifs() {
   };
 
   return (
-    <>
+    <StaticContext.Provider value={{ name: "init", subsAlCanal: false }}>
       <form onSubmit={handleSubmit}>
         <input
           placeholder="Search a gif here ..."
@@ -35,15 +39,20 @@ export function Gifs() {
         />
         <input type="submit" value="Buscar" />
       </form>
+
       <h3>Última búsquedad</h3>
-      <ListOfGifs gifs={gifs} />
+      {loadingGifs ? <Loading /> : <ListOfGifs gifs={gifs} />}
+
       <div className="Gif">
         {POPULAR_GIFS.map((popularGif) => (
           <Link to={`/gif/${popularGif}`}>Gifs {popularGif}</Link>
         ))}
-        <Route component={App} path="/" />
-        <Route component={SearchResults} path="/gif/:keyword" />
+        <GifContextProvider>
+          <Route component={App} path="/" />
+          <Route component={SearchResults} path="/gif/:keyword" />
+          <Route component={Detail} path="/gif/:id" />
+        </GifContextProvider>
       </div>
-    </>
+    </StaticContext.Provider>
   );
 }
