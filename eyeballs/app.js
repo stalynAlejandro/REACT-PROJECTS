@@ -5,8 +5,6 @@ const anchorX = rekt.left + rekt.width / 2; // Midle of the box
 const anchorY = rekt.top + rekt.height / 2;
 
 document.addEventListener("mousemove", (e) => {
-  console.log(e);
-
   const mouseX = e.clientX; //represent the position of the cursor
   const mouseY = e.clientY;
 
