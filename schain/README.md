@@ -1,6 +1,5 @@
-
-
 # Click HERE to visit
+
 The on going project => [https://schain-project.vercel.app/](https://schain-project.vercel.app/).
 
 ## Getting Started
@@ -36,32 +35,32 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
-# DOCUMENTATION 
+# DOCUMENTATION
 
 # DATA FETCHING
+
 Three unique Nextjs functions you can use to fetch data for pre-rendering:
 
     -   getStaticProps. Static Generation. Fetch data at build time.
-    -   getStaticPaths. Static Generation. Specify dynamic routes to prerender pages based on data. 
-    -   getServerSideProps. Server Side Rendering. Fetch data on each request. 
+    -   getStaticPaths. Static Generation. Specify dynamic routes to prerender pages based on data.
+    -   getServerSideProps. Server Side Rendering. Fetch data on each request.
 
 # getStaticProps. Static Generation.
 
-````
+```
 export async function getStaticProps(context){
     return{
         props:{}    // Will be pased to the page component as props
     }
 }
-````
+```
 
 The **context** parameter is an object containing the following keys:
 
-    - `params` contains the route parameters for pages using dynamic routes. For example, if the page is `[id].js`, then `params` will look like `{id: ...}`. To learn more, take a look at the Dynamic Routing documentation. 
-    You should use this together with `getStaticPaths`, which we'll explain later. 
+    - `params` contains the route parameters for pages using dynamic routes. For example, if the page is `[id].js`, then `params` will look like `{id: ...}`. To learn more, take a look at the Dynamic Routing documentation.
+    You should use this together with `getStaticPaths`, which we'll explain later.
 
-    - `preview` is `true` if the page is in the preview mode and `undefined` otherwise. 
+    - `preview` is `true` if the page is in the preview mode and `undefined` otherwise.
 
     - `previewData` contains the preview data set by `setPreviewData`.
 
@@ -79,9 +78,8 @@ The **context** parameter is an object containing the following keys:
     - `revalidate` A required object with the props that will be received
     by the page component. It should be a **serialized object**.
 
-    - `notFound` An optional boolean value to allow the page to return a 
+    - `notFound` An optional boolean value to allow the page to return a
     404 status and page. Below is an example of how it works.
-
 
 ```
 export async function getStaticProps(context){
@@ -99,9 +97,10 @@ export async function getStaticProps(context){
     }
 }
 ```
+
 **notFound** is not needed for `fallback false` mode as only paths returned from `getStaticPaths` will be pre-rendered.
 
-    - redirect. An optional redirect value to allow redirecting to internal and external resources. It should match the shape of `{ destination: string, permanent: boolean}`. 
+    - redirect. An optional redirect value to allow redirecting to internal and external resources. It should match the shape of `{ destination: string, permanent: boolean}`.
     In some rare cases, you might need to assign a custom status code
     for older HTTP Clients to properly redirect. In these property, but
     not both. Below is an example of how it works:
@@ -126,7 +125,7 @@ export async function getStaticProps(context){
 }
 ```
 
-Note: Redirecting at build-time is currently not allowed and if the 
+Note: Redirecting at build-time is currently not allowed and if the
 redirects are known at build-time they should be added in
 `next.config.js`
 
@@ -135,7 +134,7 @@ Imports used in `getStaticProps` will not be bundled for client-side.
 
 This means you can write **server side code directly in** `getStaticProps`. This includes reading from the filesystem or a database.
 
-You should not use `fetch()` to call an API route `getStaticProps`. 
+You should not use `fetch()` to call an API route `getStaticProps`.
 Instead, directly import the logic used inside your API route. You may
 need to slightly refactor your code for this approach.
 
@@ -143,7 +142,7 @@ Fetching from an external API is fine!
 
 # SIMPLE EXAMPLE
 
-This example uses **getStaticProps** to fetch a list of blog posts from a CMS (content management system). 
+This example uses **getStaticProps** to fetch a list of blog posts from a CMS (content management system).
 
 ```
 // posts will be populated at build time by getStaticProps()
@@ -180,13 +179,8 @@ export default Blog
 
 # When should I use `getStaticProps`
 
-You should use `getStaticProps`:
-    - The data required to render the page is available at build time ahead of a user's request.
-    - The data comes from a headless CMS.
-    - The data can be publicly cached (not user-specific)
-    - The page must be pre-rendered (for SEO) and be very fast. `getStaticProps` generates HTML and JSON files, both of which can be
-    cached by a CDN for performance. 
-
+You should use `getStaticProps`: - The data required to render the page is available at build time ahead of a user's request. - The data comes from a headless CMS. - The data can be publicly cached (not user-specific) - The page must be pre-rendered (for SEO) and be very fast. `getStaticProps` generates HTML and JSON files, both of which can be
+cached by a CDN for performance.
 
 # TypeScript: use `GetStaticProps`
 
@@ -202,7 +196,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 If you want to get inferred for your props, you can use `InferGetStaticPropsType<typeof getStaticProps>` like this:
 
-````
+```
 import { InferGetStaticPropsType } from 'next'
 
 type Post = {
@@ -227,22 +221,22 @@ function Blog({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
 
 export default Blog
 
-````
+```
 
 # Reading Files: Use 'process.cwd()'
 
 Files can be read directly from the filesystem in 'getStaticProps'
 
-In order to do so you have to get full path to a file. 
+In order to do so you have to get full path to a file.
 
-Since Next.js compiles your code into a separate directory you can't 
-use `__dirname` as the path it will return will be different from the 
+Since Next.js compiles your code into a separate directory you can't
+use `__dirname` as the path it will return will be different from the
 pages directory.
 
 Instead you can use `process.cwd()` which gives you the directory where
 Next.js is being executed.
 
-````
+```
 import { promises as fs } from 'fs'
 import path from 'path'
 
@@ -258,7 +252,7 @@ function Blog({ posts }){
 }
 
 // This function gets called at build time on server-side.
-// It won't be called on client-side, so you can even do 
+// It won't be called on client-side, so you can even do
 // direct database queries. See the 'Technicall details' section.
 export async function getStaticProps(){
     const postsDirectory = path.join(process.pwd(), 'posts')
@@ -285,14 +279,16 @@ export async function getStaticProps(){
         }
     }
 }
-````
+```
 
 # Only runs at build time
+
 Because 'getStaticProps' runs at build time, it does not receive data that's only available during request time, such as query parameters or HTTP headers as it generates static HTMl.
 
 # Routes
 
 # Dynamic route segments
+
 To match a dynamic segment you can use the bracket syntax. This allows you match named parameters.
 
 - `pages/blog/[slug].js` => `/blog/:slug` => (`/blog/hello-world`)
@@ -300,12 +296,13 @@ To match a dynamic segment you can use the bracket syntax. This allows you match
 - `pages/posts/[..all].js` => `posts/*`
 
 # Linking between pages.
+
 The Next.js router allows you to do client-side route transitions between
 pages, similar to a single-page application.
 
 A React component called `Link` is provided to do this client-side route transition.
 
-````
+```
 import Link from 'next-link'
 
 function Home(){
@@ -331,16 +328,16 @@ function Home(){
 }
 export default { Home }
 
-// In the example above we have multiple links each one maps a path 
+// In the example above we have multiple links each one maps a path
 //('href') to a known page:
     - '/'                   => 'pages/index.js'
     - '/about'              => 'pages/about.js'
     - '/blog/hello-world'   => 'pages/blog/[slug].js'
-````
-
+```
 
 #EXAMPLE CODE
-````
+
+```
 import React from 'react'
 
 function Blog({ posts }) {
@@ -366,7 +363,7 @@ export async function getStaticProps({ params }) {
     const res = await fetch('https://../posts')
     const posts = await res.json()
 
-    //Scenario 2. 
+    //Scenario 2.
     const resp = await fetch(`https://.../posts/${params.id}`)
 
     //By returning {props: {posts}} the Blog component
@@ -379,10 +376,10 @@ export async function getStaticProps({ params }) {
 }
 
 // Scenario 2. Your page path depends on external data
-// Nextjs allows you to create pages with dynamic routes. 
+// Nextjs allows you to create pages with dynamic routes.
 // 'pages/posts/[id].tsx'
-// So your page paths that are pre-rendered depend on 
-// external data. 
+// So your page paths that are pre-rendered depend on
+// external data.
 // This function gets called at build time
 export async function getStaticPaths() {
     // Call an external API endpoint to get posts
@@ -392,9 +389,9 @@ export async function getStaticPaths() {
     //Get the paths we want to pre-render based on posts
     const paths = posts.map(p => `/posts/${p.id}`)
 
-    // We'll pre-render only these paths at build time. 
-    // {fallback: false} means other routes should 404. 
+    // We'll pre-render only these paths at build time.
+    // {fallback: false} means other routes should 404.
     return { paths, fallback: false }
 }
 
-````
+```

@@ -1,1 +1,2 @@
-export { EditProfileScreen } from './EditProfileScreen'
+export { EditProfileScreen } from "./EditProfileScreen";
+
