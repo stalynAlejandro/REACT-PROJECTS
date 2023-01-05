@@ -11,12 +11,7 @@ const Dashboard = () => {
 export default function App() {
     return (
         <div className="app">
-            <div className="sidebar"></div>
-            <main className="content">
-                <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                </Routes>
-            </main>
+            <main className="content"></main>
         </div>
     )
 }
