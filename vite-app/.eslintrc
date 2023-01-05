@@ -1,11 +1,11 @@
 {
+    "root": true,
     "extends": [
+        "@react-native-community",
         "eslint:recommended",
-        "plugin:react/recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended",
-        "plugin:cypress/recommended"
+        "plugin:prettier/recommended"
     ],
     "plugins": ["prettier", "@typescript-eslint"],
     "settings": {
@@ -18,16 +18,12 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 2018,
+        "ecmaVersion": 2017,
         "sourceType": "module"
     },
+    "ignorePatterns": ["./node_modules/*"],
     "rules": {
-        "react/jsx-props-no-spreading": "off",
-        "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/no-explicit-any": "off"
-    },
-    "env": {
-        "browser": true,
-        "node": true
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "off" // <--- THIS IS THE NEW RULE
     }
 }
