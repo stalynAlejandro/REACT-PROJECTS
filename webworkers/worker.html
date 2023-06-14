@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Web Worker Ejemplo</title>
+  </head>
+  <body>
+    <p>Resultado: <output id="result"></output></p>
+    <button onclick="startWorker()">Iniciar Worker</button>
+    <button onclick="stopWorker()">Detener Worker</button>
+
+    <br /><br />
+
+    <button onclick="onInit()">onInit</button>
+    <button onclick="onChange()">onChange</button>
+
+    <br /><br />
+
+    <label for="select1">Select1:</label>
+    <select id="select1">
+      <option value="opcion1">Opción 1</option>
+      <option value="opcion2">Opción 2</option>
+      <option value="opcion3">Opción 3</option>
+    </select>
+
+    <br /><br />
+
+    <label for="input1">Input 1:</label>
+    <input type="text" id="input1" />
+
+    <br /><br />
+
+    <label for="input2">Input 2:</label>
+    <input type="text" id="input2" />
+
+    <script>
+      let worker;
+
+      function startWorker() {
+        if (typeof Worker !== "undefined") {
+          if (typeof worker == "undefined") {
+            //worker = new Worker("sta/scripts/worker.js");  // ESTE NO FUNCIONA !!!!!!!!!!!!!!!!!!!!!
+
+            // worker = new Worker("/sta/scripts/worker.js");
+            worker = new Worker("worker.js");
+
+            //worker = new Worker("/../../sta/scripts/worker.js");
+            //worker = new Worker("/../../sta/scripts/worker.js");
+            //worker = new Worker("https://localhost/sta/scripts/worker.js");
+          }
+          worker.onmessage = function (event) {
+            document.getElementById("result").innerHTML = JSON.stringify(
+              event.data,
+              null,
+              4
+            );
+          };
+        } else {
+          document.getElementById("result").innerHTML =
+            "Lo siento, tu navegador no soporta Web Workers.";
+        }
+      }
+
+      function stopWorker() {
+        worker.terminate();
+        worker = undefined;
+      }
+
+      function getEstado() {
+        return [
+          { id: "select1", value: document.getElementById("select1").value },
+          { id: "input1", value: document.getElementById("input1").value },
+          { id: "input2", value: document.getElementById("input2").value },
+        ];
+      }
+
+      function onInit() {
+        worker.postMessage({
+          action: "init",
+          state: getEstado(),
+          js: 'function(datpar, self, editable, almacen) { datpar.observar("input1", function() { datpar.set("input2", datpar.get("input1") * 2); } ); datpar.set("input1", 2); self.ctrl("input2").habilitar(false); } ',
+        });
+      }
+
+      function onChange() {
+        document.getElementById("input1").value = 11;
+        worker.postMessage({
+          action: "onchange",
+          state: getEstado(),
+          target: "input1",
+          newValue: document.getElementById("input1").value,
+        });
+      }
+    </script>
+  </body>
+</html>
