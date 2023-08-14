@@ -1,0 +1,47 @@
+{
+    "root": true,
+    "parser": "@babel/eslint-parser",
+    "plugins": [
+        "react",
+        "react-native",
+        "jsx-a11y",
+        "import",
+        "react-hooks",
+        "prettier"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:react-native/all",
+        "plugin:jsx-a11y/recommended",
+        "plugin:import/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "babel-module": {}
+        }
+    },
+    "rules": {
+        "prettier/prettier": "error",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/prop-types": "off",
+        "react/display-name": "off",
+        "import/order": ["error", { "newlines-between": "always" }],
+        "import/no-unresolved": "off",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ]
+    }
+}
