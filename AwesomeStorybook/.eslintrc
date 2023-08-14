@@ -1,0 +1,19 @@
+{
+    "root": true,
+    "extends": ["plugin:prettier/recommended"],
+    "plugins": ["prettier"],
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": "latest"
+    },
+    "parser": "@babel/eslint-parser",
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "ignorePatterns": ["./node_modules/*"],
+    "rules": {
+        "prettier/prettier": "warn"
+    }
+}
